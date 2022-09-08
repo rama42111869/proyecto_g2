@@ -28,8 +28,8 @@ a:hover {
 .container {
   display: flex;
   justify-content: space-around;
-  background-color: #fafafa;
-  text-align: center;
+  background-color: #aea9a9;
+
   width: 100%;
 }
 
@@ -55,7 +55,7 @@ a:hover {
 .row-iconos {
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  /* background-color: white; */
   height: 3rem;
 }
 
@@ -68,7 +68,7 @@ a:hover {
 
 img {
   width: 10rem;
-  background-color: white;
+  /* background-color: white; */
 }
 
 
