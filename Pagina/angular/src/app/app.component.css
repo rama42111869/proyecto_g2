@@ -1,0 +1,11 @@
+.div{
+  padding: 10px 15%;
+  margin: 10px auto;
+}
+
+
+@media screen and(max-width:912px){
+  .div{
+    padding: 10px 7%;
+  }
+}
