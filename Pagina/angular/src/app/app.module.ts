@@ -3,27 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [
-    AppComponent
-=======
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { NgImageSliderModule } from 'ng-image-slider';
+import { BodyComponent } from './body/body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
->>>>>>> Stashed changes
+    BodyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NgImageSliderModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
