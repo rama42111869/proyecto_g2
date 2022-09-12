@@ -18,12 +18,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
-    "@zy2ba/ng-image-slider": "^1.0.0",
-    "angular": "^1.6.10",
-    "bootstrap": "^5.2.1",
-    "ng-image-slider": "^6.0.0",
+    "angular": "^1.8.3",
     "rxjs": "~7.5.0",
-    "tsl": "^0.1.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

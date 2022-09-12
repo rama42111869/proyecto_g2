@@ -8,13 +8,9 @@ html {
 }
 
 h6 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-}
-
-p {
-  display: inline;
 }
 
 a {
@@ -22,6 +18,7 @@ a {
   color: #666;
   display: block;
   margin-bottom: 1.2rem;
+  font-size: 1.2rem;
 }
 
 a:hover {
@@ -30,73 +27,64 @@ a:hover {
 
 .container {
   display: flex;
-  justify-content: center;
-  background-color: #fafafa;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
+  justify-content: space-around;
+  background-color: #aea9a9;
 
-.row {
-  display: flex;
-  margin: 2rem;
-}
-
-.row-cont{
-  display: flex;
-  margin-top: 2.8rem;
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-}
-
-.col-cont {
-  margin-right: 2rem;
+  width: 100%;
 }
 
 
 .col {
+  display: flex;
+  margin: 2rem;
+}
+
+.col-2{
+  display: block;
+  margin: 2rem;
+
+}
+
+.row {
   margin-right: 3rem;
   margin-left: 3rem;
   margin-top: 1rem;
 }
 
 
-.col-iconos {
+.row-iconos {
   display: flex;
-
-}
-
-.col-iconos p {
-  padding-right: 1rem;
-
+  justify-content: space-between;
+  /* background-color: white; */
+  height: 3rem;
 }
 
 
-.row-sub {
+
+.img {
   display: flex;
   justify-content: center;
-  padding: 0;
-  margin: 0;
+}
+
+img {
+  width: 10rem;
+  /* background-color: white; */
 }
 
 
-.input-field {
-  width: 100%;
+@media screen and (max-width: 800px){
+  .container {
+    display: block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .col {
+    display: block;
+  }
+
 }
 
-
-
-.sub-button a {
-  padding: 1.5rem;
-  background-color: #000;
-  color: #fff;
-}
-
-input {
-  width: 100%;
-  height: 3.7rem;
-  position: relative;
-}
-
-.tajetas p {
-  margin-right: 3rem;
+svg {
+  margin-right: 1rem;
 }
