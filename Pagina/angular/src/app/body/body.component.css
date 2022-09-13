@@ -28,7 +28,6 @@
     list-style: none;
     order: 1;
     transition: all 0.9s;
-    animation: slider 20s infinite;
   }
   .slider img {
     width: 900px;
