@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    min-height: 100vh;
+    background: #a5a5a5;
+  }
+  
+  .slider {
+    width: 900px;
+    height: 360px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+  
+    box-shadow: 0 0 0 10px white, 0 0 0 20px rgb(255, 255, 255);
+  }
+  
+  .slider ul {
+    width: 400%;
+    height: 300px;
+    display: flex;
+    list-style: none;
+    order: 1;
+    transition: all 0.9s;
+  }
+  .slider img {
+    width: 900px;
+    height: 360px;
+    display: block;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  
+  input[type="radio"] + label {
+    display: block;
+    width: 25%;
+    height: 60px;
+    cursor: pointer;
+    order: 2;
+    border: 1px solid #fff;
+    opacity: 0.3;
+  }
+  
+  input[type="radio"] + label:hover {
+    opacity: 0.3;
+  }
+  
+  #sbutton1 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton2 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton3 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton4 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton1:checked ~ ul {
+    margin-left: 0;
+    animation: none;
+  }
+  
+  #sbutton2:checked ~ ul {
+    margin-left: -100%;
+    animation: none;
+  }
+  
+  #sbutton3:checked ~ ul {
+    margin-left: -200%;
+    animation: none;
+  }
+  #sbutton4:checked ~ ul {
+    margin-left: -300%;
+    animation: none;
+  }
+
+  #sbutton5 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton6 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton7 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton8 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton5:checked ~ ul {
+    margin-left: 0;
+    animation: none;
+  }
+  
+  #sbutton6:checked ~ ul {
+    margin-left: -100%;
+    animation: none;
+  }
+  
+  #sbutton7:checked ~ ul {
+    margin-left: -200%;
+    animation: none;
+  }
+  #sbutton8:checked ~ ul {
+    margin-left: -300%;
+    animation: none;
+  }
+
+  #sbutton9 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton10 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton11 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton12 + label {
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+  }
+  
+  #sbutton9:checked ~ ul {
+    margin-left: 0;
+    animation: none;
+  }
+  
+  #sbutton10:checked ~ ul {
+    margin-left: -100%;
+    animation: none;
+  }
+  
+  #sbutton11:checked ~ ul {
+    margin-left: -200%;
+    animation: none;
+  }
+  #sbutton12:checked ~ ul {
+    margin-left: -300%;
+    animation: none;
+  }
+
+  
+  @keyframes slider {
+    0%,
+    20% {
+      margin-left: 0;
+    }
+    25%,
+    40% {
+      margin-left: -100%;
+    }
+    45%,
+    70% {
+      margin-left: -200%;
+    }
+    75%,
+    100% {
+      margin-left: -300%;
+    }
+  }
+  
