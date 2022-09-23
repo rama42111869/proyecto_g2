@@ -1,3 +1,4 @@
+/*
 .parent {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -11,11 +12,12 @@
   .div3 { grid-area: 1 / 7 / 2 / 8; }
   .div4 { grid-area: 1 / 8 / 2 / 9; }
   .div5 { grid-area: 1 / 2 / 2 / 7; }
-
+*/
 
 
 /* BARRA 2 */
 
+/*
 .container-search{
   display: inline;
   min-height: 100vh;
@@ -64,9 +66,10 @@
     right: 2px;
   }
 
-
+*/
 
 /*icono desplegable*/
+/*
   .main{
   width: 60px;
   cursor: pointer;
@@ -185,3 +188,5 @@ svg{
     visibility: visible;
     opacity: 1;
   }
+*/
+
