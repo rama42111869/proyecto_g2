@@ -20,20 +20,25 @@ public class ProductService {
 
     public Product getOneProduct(Long id){
         if(productRepository.existsById(id)){
-            Product product = modelMapper.map(productRepository.findById(id), Product.class);
+            // Product product = modelMapper.map(productRepository.findById(id), Product.class);
+            Product product = mapEntityToProduct(productRepository.findById(id));
             return product;
         }
         return null;
     }
 
     public List<Product> getAllProducts(){
-        List<Product> allProducts = modelMapper.map(productRepository.findAll(), Product.class);
+        // List<Product> allProducts = modelMapper.map(productRepository.findAll(), Product.class);
+
+        List<Product> allProducts = mapEntityToProduct(productRepository.findAll());
 
         return allProducts;
     }
 
     public Product createNewProduct(Product product){
-        ProductJPA productJPA = mapProductToEntity(product);
+        // ProductJPA productJPA = mapProductToEntity(product);
+
+        ProdJPA productJPA = mapProductToEntity(product);
 
         productRepository.save(productJPA);
 
@@ -43,8 +48,13 @@ public class ProductService {
 
     public Product updateProduct(Long id, Product product){
         if(productRepository.existsById(id)){
-            ProductJPA newProductJPA = modelMapper.map(product, ProductJPA);
-            productRepository.save(newProductJPA);
+            ProductJPA productToUpdate = productRepository.findById(id).get();
+
+            /*
+             * Actualizar campos del productToUpdate
+             */
+
+            productRepository.save(productToUpdate);
 
             return product;
         }
@@ -54,7 +64,9 @@ public class ProductService {
     public Product deleteOneProduct(Long id){
         if(productRepository.existsById(id)){
             ProductJPA product = productRepository.findById(id).get();
-            Product productToReturn = modelMapper.map(product, Product.class);
+
+            // Product productToReturn = modelMapper.map(product, Product.class);
+            Product productToReturn = mapEntityToProduct(product);
 
             productRepository.deleteById(id);
 
