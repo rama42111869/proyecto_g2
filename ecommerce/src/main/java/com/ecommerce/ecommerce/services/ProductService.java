@@ -50,11 +50,15 @@ public class ProductService {
         if(productRepository.existsById(id)){
             ProductJPA productToUpdate = productRepository.findById(id).get();
 
-            /*
-             * Actualizar campos del productToUpdate
-             */
+            Product productModel = mapEntityToProduct(productToUpdate);
 
-            productRepository.save(productToUpdate);
+            productModel.setName(product.getName());
+            productModel.setDescription(product.getDescription);
+            productModel.setPrice(product.getPrice());
+            productModel.setImages(product.getImages());
+            productModel.setBrand(product.getBrand());
+
+            productRepository.save(mapProductToEntity(productModel));
 
             return product;
         }
