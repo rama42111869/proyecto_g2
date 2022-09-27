@@ -1,10 +1,11 @@
 package com.acel.middleware.Model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Product {
     private Long id;
     private String name;
