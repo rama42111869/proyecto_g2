@@ -46,11 +46,13 @@ public class UserService {
         if(userRepository.existsById(id)){
             UserJPA userToUpdate = userRepository.findById(id).get();
 
-            /* 
-             * HACER EL UPDATE DEL userToUpdate
-             */
+            UserModel userModel = mapEntityToUser(userToUpdate);
 
-            userRepository.save(userToUpdate);
+            userModel.setName(user.getName());
+            userModel.setSurname(user.getSurname);
+            userModel.setMail(user.getMail());
+
+            userRepository.save(mapUserToEntity(userModel));
 
             return user;
         }
