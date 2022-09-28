@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/middle/category")
+@RequestMapping("/middle/categories")
 public class CategoryController {
     @Autowired
     private ICategoryService iC;

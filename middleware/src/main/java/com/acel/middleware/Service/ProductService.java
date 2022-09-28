@@ -106,7 +106,7 @@ public class ProductService implements IProductService {
 //            return ResponseEntity.internalServerError().build();
 //        }
         Product pEx = new Product(1l,"Air Force X Levis","Calzado urbano de tela de Jean",500f,"middleware/src/main/resources","Nike");
-        return  ResponseEntity.status(HttpStatus.CREATED).body(pEx);
+        return  ResponseEntity.status(HttpStatus.OK).body(pEx);
     }
 
     @Override
