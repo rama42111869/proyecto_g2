@@ -13,48 +13,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.services.UserService;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/users")
 public class UserController {
     
     @Autowired
     private UserService userService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<UserModel>> returnAllUsers(){
-        List<Product> allUsers = userService.getAllUsers();
+    @GetMapping()
+    public ResponseEntity<List<User>> returnAllUsers(){
+        List<User> allUsers = userService.getAllUsers();
 
-        return new ResponseEntity<>(HttpStatus.OK, allUsers);
+        return ResponseEntity.ok(allUsers);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserModel> returnOneUser(@PathVariable Long id){
-        UserModel userToReturn = userService.getOneUser(id).get();
+    public ResponseEntity<User> returnOneUser(@PathVariable Long id){
+        User userToReturn = userService.getOneUser(id);
 
         if(userToReturn != null){
-            return new ResponseEntity<>(HttpStatus.OK, userToReturn);
+            return ResponseEntity.ok(userToReturn);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND, id);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PostMapping("/createUser")
-    public ResponseEntity<UserModel> createOneUser(@RequestBody UserModel user){
+    @PostMapping()
+    public ResponseEntity<User> createOneUser(@RequestBody User user){
         if(user != null){
             userService.createNewUser(user);
-            return new ResponseEntity<>(HttpStatus.CREATED, user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(user);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST, user);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PutMapping("/updateUser/{id}")
-    public ResponseEntity<UserModel> updateOneUser(@PathVariable Long id, @RequestBody UserModel user){
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateOneUser(@PathVariable Long id, @RequestBody User user){
         if(user != null){
             userService.updateUser(id, user);
-            return new ResponseEntity<>(HttpStatus.OK, user);
+            return ResponseEntity.ok().build();
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST, user);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
 }

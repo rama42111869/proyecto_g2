@@ -1,11 +1,16 @@
 package com.ecommerce.ecommerce.services;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.ecommerce.DBModel.CategoryJPA;
+import com.ecommerce.ecommerce.DBModel.ProductJPA;
+import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
 
 @Service
@@ -19,27 +24,29 @@ public class ProductService {
 
 
     public Product getOneProduct(Long id){
-        if(productRepository.existsById(id)){
-            // Product product = modelMapper.map(productRepository.findById(id), Product.class);
-            Product product = mapEntityToProduct(productRepository.findById(id));
-            return product;
+        Optional<ProductJPA> product = productRepository.findById(id);
+        if(product.isPresent()){
+            return mapEntityToProduct(product.get());
         }
-        return null;
+        else {
+            return null;
+        }
     }
 
     public List<Product> getAllProducts(){
-        // List<Product> allProducts = modelMapper.map(productRepository.findAll(), Product.class);
-
-        List<Product> allProducts = mapEntityToProduct(productRepository.findAll());
+        List<Product> allProducts = new LinkedList<Product>();
+    
+        for (ProductJPA productJPA : productRepository.findAll()) {
+            allProducts.add(mapEntityToProduct(productJPA));
+        }
 
         return allProducts;
     }
 
     public Product createNewProduct(Product product){
-        // ProductJPA productJPA = mapProductToEntity(product);
-
-        ProdJPA productJPA = mapProductToEntity(product);
-
+        System.out.println("Producto Normal:"+product.getCategory().getName());
+        ProductJPA productJPA = mapProductToEntity(product);
+        System.out.println("Producto JPA:"+productJPA.getCategory().getName());;
         productRepository.save(productJPA);
 
         return product;
@@ -53,7 +60,7 @@ public class ProductService {
             Product productModel = mapEntityToProduct(productToUpdate);
 
             productModel.setName(product.getName());
-            productModel.setDescription(product.getDescription);
+            productModel.setDescription(product.getDescription());
             productModel.setPrice(product.getPrice());
             productModel.setImages(product.getImages());
             productModel.setBrand(product.getBrand());
@@ -66,14 +73,10 @@ public class ProductService {
     }
 
     public Product deleteOneProduct(Long id){
-        if(productRepository.existsById(id)){
-            ProductJPA product = productRepository.findById(id).get();
-
-            // Product productToReturn = modelMapper.map(product, Product.class);
-            Product productToReturn = mapEntityToProduct(product);
-
+        Optional<ProductJPA> product = productRepository.findById(id);
+        if(product.isPresent()){
             productRepository.deleteById(id);
-
+            Product productToReturn = mapEntityToProduct(product.get());
             return productToReturn;
         }
         return null;
@@ -88,7 +91,14 @@ public class ProductService {
     }
 
     public ProductJPA mapProductToEntity(Product product){
-        ProductJPA mapedJPA = modelMapper.map(Product, ProductJPA.class);
+        //ProductJPA mapedJPA = modelMapper.map(Product.class, ProductJPA.class);
+        ProductJPA mapedJPA = new ProductJPA(product.getId(), 
+                                        product.getName(), 
+                                        product.getDescription(), 
+                                        product.getPrice(), 
+                                        product.getImages(), 
+                                        product.getBrand(), 
+                                        new CategoryJPA(product.getCategory().getName()));
         return mapedJPA;
     }
 }

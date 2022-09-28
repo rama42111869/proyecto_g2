@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.services.ProductService;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/products")
 public class ProductController {
     
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<List<Product>> listAllProducts(){
         List<Product> allProducts = productService.getAllProducts();
-
-        return new ResponseEntity<>(HttpStatus.OK, allProducts);
+        return ResponseEntity.status(HttpStatus.OK).body(allProducts);
     }
 
     @GetMapping("/{id}")
@@ -35,36 +35,36 @@ public class ProductController {
         Product product = productService.getOneProduct(id);
 
         if(product != null){
-            return new ResponseEntity<>(HttpStatus.OK, product);
+            return ResponseEntity.status(HttpStatus.OK).body(product);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND, id);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PostMapping("/newProduct")
+    @PostMapping()
     public ResponseEntity<Product> createOneProduct(@RequestBody Product product){
         if(product != null){
             productService.createNewProduct(product);
-            return new ResponseEntity<>(HttpStatus.CREATED, product);
+            return ResponseEntity.status(HttpStatus.CREATED).body(product);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST, product);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PutMapping("/updateProduct/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Product> updateOneProduct(@PathVariable Long id, @RequestBody Product product){
         if(product != null){
             productService.updateProduct(id, product);
-            return new ResponseEntity<>(HttpStatus.OK, product);
+            return ResponseEntity.status(HttpStatus.OK).body(product);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST, product);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(product);
     }
 
-    @DeleteMapping("/deleteProduct/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Product> deleteOneProduct(@PathVariable Long id){
-        Product product = productService.getOneProduct(id).get();
+        Product product = productService.getOneProduct(id);
 
         if(product != null){
             productService.deleteOneProduct(id);
-            return new ResponseEntity<>(HttpStatus.OK, product);
+            return ResponseEntity.status(HttpStatus.OK).body(product);
         }
         return null;
     }

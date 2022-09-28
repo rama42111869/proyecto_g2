@@ -8,12 +8,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Category")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryJPA {
@@ -22,4 +24,8 @@ public class CategoryJPA {
     private String sizes;
     @OneToMany(mappedBy = "category")
     private Set<ProductJPA> products;
+
+    public CategoryJPA(String name){
+        this.name = name;
+    }
 }
