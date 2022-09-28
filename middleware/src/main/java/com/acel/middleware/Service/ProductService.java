@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Service
 public class ProductService implements IProductService {
@@ -105,7 +106,7 @@ public class ProductService implements IProductService {
 //            return ResponseEntity.internalServerError().build();
 //        }
         Product pEx = new Product(1l,"Air Force X Levis","Calzado urbano de tela de Jean",500f,"middleware/src/main/resources","Nike");
-        return  ResponseEntity.status(HttpStatus.CREATED).body(pEx);
+        return  ResponseEntity.status(HttpStatus.OK).body(pEx);
     }
 
     @Override
@@ -125,11 +126,12 @@ public class ProductService implements IProductService {
 //        }
 
         Product pEx1 = new Product(1l,"Air Force X Levis","Calzado urbano de tela de Jean",700f,"middleware/src/main/resources","Nike");
-        Product pEx2 = new Product(1l,"Air Force 1 X Louis Vuitton","Calzado urbano exclusivo",2000f,"middleware/src/main/resources","Nike");
-        Product pEx3 = new Product(1l,"Chaqueta Takerlama Akira Kaneda","para hombre, abrigo rojo para Cosplay, cápsula, píldora estampada, bombardero, motociclista, disfraz de cuero, ropa de Anime",40f,"middleware/src/main/resources","AliRop");
-        ArrayList<Product> pArr = new ArrayList<>();
-        pArr.add(pEx1); pArr.add(pEx2);pArr.add(pEx3);
-        Product[] pExs = (Product[]) pArr.toArray();
+        Product pEx2 = new Product(2l,"Air Force 1 X Louis Vuitton","Calzado urbano exclusivo",2000f,"middleware/src/main/resources","Nike");
+        Product pEx3 = new Product(3l,"Chaqueta Takerlama Akira Kaneda","para hombre, abrigo rojo para Cosplay, cápsula, píldora estampada, bombardero, motociclista, disfraz de cuero, ropa de Anime",40f,"middleware/src/main/resources","AliRop");
+        Product[] pExs = new Product[3];
+        Array.set(pExs,0,pEx1);
+        Array.set(pExs,1,pEx2);
+        Array.set(pExs,2,pEx3);
         return ResponseEntity.status(HttpStatus.OK).body(pExs);
     }
 }

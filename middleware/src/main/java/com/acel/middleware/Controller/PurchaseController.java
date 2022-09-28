@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/middle/purchase")
+@RequestMapping("/middle/purchases")
 public class PurchaseController {
     @Autowired
     private IPurchaseService ip;
@@ -17,8 +17,8 @@ public class PurchaseController {
     }
 
     @PostMapping()
-    public ResponseEntity<Integer> create(@RequestBody Purchase user){
-        return ip.savePu(user);
+    public ResponseEntity<Integer> create(@RequestBody Purchase purchase){
+        return ip.savePu(purchase);
     }
 
     @GetMapping("/{idP}")
@@ -27,8 +27,8 @@ public class PurchaseController {
     }
 
     @PutMapping()
-    public ResponseEntity<Integer> update(@RequestBody Purchase user){
-        return ip.updatePu(user);
+    public ResponseEntity<Integer> update(@RequestBody Purchase purchase){
+        return ip.updatePu(purchase);
     }
 
     @DeleteMapping("/{idP}")
