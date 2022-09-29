@@ -84,14 +84,12 @@ public class ProductService {
 
 
     /* MAPPERS */
-
     public Product mapEntityToProduct(ProductJPA productJPA){
         Product mapedProduct = modelMapper.map(productJPA, Product.class);
         return mapedProduct;
     }
 
     public ProductJPA mapProductToEntity(Product product){
-        //ProductJPA mapedJPA = modelMapper.map(Product.class, ProductJPA.class);
         ProductJPA mapedJPA = new ProductJPA(product.getId(), 
                                         product.getName(), 
                                         product.getDescription(), 
