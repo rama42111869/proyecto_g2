@@ -8,11 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ecommerce.ecommerce.DBModel.CategoryJPA;
-import com.ecommerce.ecommerce.DBModel.ProductJPA;
 import com.ecommerce.ecommerce.DBModel.PurchaseJPA;
-import com.ecommerce.ecommerce.DBModel.UserJPA;
-import com.ecommerce.ecommerce.model.Category;
 import com.ecommerce.ecommerce.model.Purchase;
 import com.ecommerce.ecommerce.repositories.IPurchaseRepository;
 
@@ -24,9 +20,15 @@ public class PurchaseService {
 
     @Autowired
     private IPurchaseRepository purchaseRepository;
+    
+    @Autowired
+    private ProductService productService;
+    
+    @Autowired
+    private UserService userService;
 
     public List<Purchase> getAllPurchase() {
-        List<Purchase> allPurchase = new LinkedList<Purchase>();
+        List<Purchase> allPurchase = new LinkedList<>();
     
         for (PurchaseJPA pruchaseJPA : purchaseRepository.findAll()) {
             allPurchase.add(mapEntityToPurchase(pruchaseJPA));
@@ -70,19 +72,23 @@ public class PurchaseService {
         }
         return null;
     }
+    
     /* MAPPERS */
-
     public Purchase mapEntityToPurchase(PurchaseJPA purchaseJPA){
         Purchase mapedPurchase = modelMapper.map(purchaseJPA, Purchase.class);
         return mapedPurchase;
     }
 
     public PurchaseJPA mapPurchaseToEntity(Purchase purchase){
-        PurchaseJPA mapedJPA = new PurchaseJPA(purchase.getId(), 
-        purchase.getDate(), 
-        new ProductJPA(purchase.getProduct().getName().getPrice()),
-        new UserJPA(purchase.getUser().getMail().getName().getSurname()));
-        return mapedJPA;
+        PurchaseJPA purchaseJPA = new PurchaseJPA(
+                purchase.getId(),
+                productService.mapProductToEntity(purchase.getProduct()),
+                userService.mapUserToEntity(purchase.getUser()),
+                purchase.getAmount(),
+                purchase.getDate()            
+        );
+           return purchaseJPA;
+
     }
     
 }

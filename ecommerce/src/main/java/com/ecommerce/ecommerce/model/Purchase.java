@@ -13,10 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Purchase {
 
-    private Long id;
-    private Date date;
-    private short amount;
-    private User user;
+    private Long id;   
     private Product product;
+    private User user;
+    private short amount;
+    private Date date;
 
 }
