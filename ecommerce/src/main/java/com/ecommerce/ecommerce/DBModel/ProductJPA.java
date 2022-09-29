@@ -14,18 +14,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Product")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductJPA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(nullable = false)
     private String name;
     @Column(columnDefinition = "text")
@@ -40,5 +42,17 @@ public class ProductJPA {
     private CategoryJPA category;
     @OneToMany(mappedBy = "product")
     private Set<PurchaseJPA> purchases;
+    public ProductJPA(Long id, String name, String description, float price, String images, String brand,
+            CategoryJPA category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.images = images;
+        this.brand = brand;
+        this.category = category;
+    }
+
+    
 
 }

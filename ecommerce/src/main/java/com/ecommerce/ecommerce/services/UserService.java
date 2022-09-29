@@ -1,11 +1,15 @@
 package com.ecommerce.ecommerce.services;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.ecommerce.DBModel.UserJPA;
+import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.repositories.IUserRepository;
 
 @Service
@@ -17,21 +21,27 @@ public class UserService {
     @Autowired
     private IUserRepository userRepository;
 
-    public UserModel getOneUser(Long id){
-        if(userRepository.existsById(id)){
-            UserModel user = mapEntityToUser(userRepository.findById(id).get());
-
-            return user;
+    public User getOneUser(Long id){
+        Optional<UserJPA> user = userRepository.findById(id);
+        if(user.isPresent()){
+            return mapEntityToUser(user.get());
+        }
+        else {
+            return null;
         }
     }
 
-    public List<UserModel> getAllUsers(){
-        List<UserModel> allUsers = mapEntityToUser(userRepository.findAll().toList());
+    public List<User> getAllUsers(){
+        List<User> allUsers = new LinkedList<User>();
+    
+        for (UserJPA userJPA : userRepository.findAll()) {
+            allUsers.add(mapEntityToUser(userJPA));
+        }
 
         return allUsers;
     }
 
-    public UserModel createNewUser(UserModel user){
+    public User createNewUser(User user){
         if(user != null){
             UserJPA userJPA = mapUserToEntity(user);
 
@@ -42,28 +52,28 @@ public class UserService {
         return null;
     }
     
-    public UserModel updateUser(Long id, UserModel user){
+    public User updateUser(Long id, User user){
         if(userRepository.existsById(id)){
             UserJPA userToUpdate = userRepository.findById(id).get();
 
-            UserModel userModel = mapEntityToUser(userToUpdate);
+            User User = mapEntityToUser(userToUpdate);
 
-            userModel.setName(user.getName());
-            userModel.setSurname(user.getSurname);
-            userModel.setMail(user.getMail());
+            User.setName(user.getName());
+            User.setSurname(user.getSurname());
+            User.setMail(user.getMail());
 
-            userRepository.save(mapUserToEntity(userModel));
+            userRepository.save(mapUserToEntity(User));
 
             return user;
         }
         return null;
     }
 
-    public UserModel deleteUser(Long id){
+    public User deleteUser(Long id){
         if(userRepository.existsById(id)){
             UserJPA userToDelete = userRepository.findById(id).get();
 
-            UserModel userDeleted = mapEntityToUser(userToDelete);
+            User userDeleted = mapEntityToUser(userToDelete);
 
             userRepository.deleteById(id);
 
@@ -75,13 +85,14 @@ public class UserService {
 
     /* MAPPERS */
 
-    public UserModel mapEntityToUser(UserJPA userJPA) {
-        UserModel mapedProduct = modelMapper.map(userJPA, UserModel.class);
+    public User mapEntityToUser(UserJPA userJPA) {
+        User mapedProduct = modelMapper.map(userJPA, User.class);
         return mapedProduct;
     }
 
-    public UserJPA mapUserToEntity(UserModel user) {
-        UserJPA mapedJPA = modelMapper.map(UserModel, UserJPA.class);
+    public UserJPA mapUserToEntity(User user) {
+        //UserJPA mapedJPA = modelMapper.map(User.class, UserJPA.class);
+        UserJPA mapedJPA = new UserJPA(user.getMail(), user.getName(), user.getMail());
         return mapedJPA;
     }
 
