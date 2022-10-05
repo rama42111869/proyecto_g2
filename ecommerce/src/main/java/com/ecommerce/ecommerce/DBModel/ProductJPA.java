@@ -1,5 +1,8 @@
 package com.ecommerce.ecommerce.DBModel;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -25,32 +28,53 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductJPA {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+//    @Column(nullable = false)
+//    private String name;
+//    @Column(columnDefinition = "text")
+//    private String description;
+//    @Column(nullable = false)
+//    private float price;
+//    @Column(columnDefinition = "text")
+//    private String images;
+//    private String brand;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "category", nullable = false)
+//    private CategoryJPA category;
+//    @OneToMany(mappedBy = "product")
+//    private Set<PurchaseJPA> purchases;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    
     private String name;
-    @Column(columnDefinition = "text")
+    
     private String description;
-    @Column(nullable = false)
-    private float price;
-    @Column(columnDefinition = "text")
+    
+    private double price;
+    
     private String images;
+    
     private String brand;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category", nullable = false)
+    
+    @ManyToOne
+    @JoinColumn(name = "category")
+    @JsonBackReference
     private CategoryJPA category;
+    
     @OneToMany(mappedBy = "product")
-    private Set<PurchaseJPA> purchases;
-    public ProductJPA(Long id, String name, String description, float price, String images, String brand,
-            CategoryJPA category) {
-        this.id = id;
+    @JsonManagedReference
+    private List<PurchaseJPA> purchases;
+    
+    public ProductJPA(String name, String description, double price, String images, String brand) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.images = images;
         this.brand = brand;
-        this.category = category;
     }
 
     
