@@ -1,6 +1,5 @@
 package com.ecommerce.ecommerce.services;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.ecommerce.DBModel.CategoryJPA;
 import com.ecommerce.ecommerce.DBModel.ProductJPA;
 import com.ecommerce.ecommerce.model.Product;
+import com.ecommerce.ecommerce.repositories.ICategoryRepository;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
+import java.util.ArrayList;
 
 @Service
 public class ProductService {
@@ -21,6 +22,9 @@ public class ProductService {
 
     @Autowired
     private IProductRepository productRepository;
+    
+    @Autowired
+    private ICategoryRepository categoryRepository;
 
 
     public Product getOneProduct(Long id){
@@ -34,7 +38,7 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts(){
-        List<Product> allProducts = new LinkedList<Product>();
+        List<Product> allProducts = new ArrayList<>();
     
         for (ProductJPA productJPA : productRepository.findAll()) {
             allProducts.add(mapEntityToProduct(productJPA));
@@ -43,29 +47,38 @@ public class ProductService {
         return allProducts;
     }
 
-    public Product createNewProduct(Product product){
-        System.out.println("Producto Normal:"+product.getCategory().getName());
-        ProductJPA productJPA = mapProductToEntity(product);
-        System.out.println("Producto JPA:"+productJPA.getCategory().getName());;
-        productRepository.save(productJPA);
-
-        return product;
+    public Product createNewProduct(Product product, Long categoryId){
+        
+        CategoryJPA categoryJPA = categoryRepository.findById(categoryId).get();
+        
+        if(categoryJPA != null){
+            ProductJPA productJPA = mapProductToEntity(product);
+            productJPA.setCategory(categoryJPA);
+            productRepository.save(productJPA);
+            return product;
+        }   
+        return null;
     }
 
 
-    public Product updateProduct(Long id, Product product){
+    public Product updateProduct(Long id, Long categoryId, Product product){
         if(productRepository.existsById(id)){
             ProductJPA productToUpdate = productRepository.findById(id).get();
+            
+            CategoryJPA categoryToLink = categoryRepository.findById(categoryId).get();
 
-            Product productModel = mapEntityToProduct(productToUpdate);
+           
+            productToUpdate.setName(product.getName());
+            productToUpdate.setDescription(product.getDescription());
+            productToUpdate.setPrice(product.getPrice());
+            productToUpdate.setImages(product.getImages());
+            productToUpdate.setBrand(product.getBrand());
+            
+            if(categoryToLink != null){
+                productToUpdate.setCategory(categoryToLink);
+            }
 
-            productModel.setName(product.getName());
-            productModel.setDescription(product.getDescription());
-            productModel.setPrice(product.getPrice());
-            productModel.setImages(product.getImages());
-            productModel.setBrand(product.getBrand());
-
-            productRepository.save(mapProductToEntity(productModel));
+            productRepository.save(productToUpdate);
 
             return product;
         }
@@ -90,13 +103,14 @@ public class ProductService {
     }
 
     public ProductJPA mapProductToEntity(Product product){
-        ProductJPA mapedJPA = new ProductJPA(product.getId(), 
-                                        product.getName(), 
-                                        product.getDescription(), 
-                                        product.getPrice(), 
-                                        product.getImages(), 
-                                        product.getBrand(), 
-                                        new CategoryJPA(product.getCategory().getName()));
+                
+        ProductJPA mapedJPA = new ProductJPA(
+                product.getName(), 
+                product.getDescription(), 
+                product.getPrice(), 
+                product.getImages(), 
+                product.getBrand());
+        
         return mapedJPA;
     }
 }

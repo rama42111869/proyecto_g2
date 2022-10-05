@@ -1,6 +1,6 @@
 package com.ecommerce.ecommerce.model;
 
-import java.util.Set;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,10 +15,10 @@ public class Product {
     private Long id;
     private String name;
     private String description;
-    private float price;
+    private double price;
     private String images;
     private String brand;
     private Category category;
     
-    private Set<Purchase> purchases;
+    private List<Purchase> purchases;
 }
