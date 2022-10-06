@@ -1,6 +1,5 @@
 package com.ecommerce.ecommerce.services;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.ecommerce.DBModel.UserJPA;
 import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.repositories.IUserRepository;
+import java.util.ArrayList;
 
 @Service
 public class UserService {
@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public List<User> getAllUsers(){
-        List<User> allUsers = new LinkedList<User>();
+        List<User> allUsers = new ArrayList<>();
     
         for (UserJPA userJPA : userRepository.findAll()) {
             allUsers.add(mapEntityToUser(userJPA));
@@ -55,14 +55,12 @@ public class UserService {
     public User updateUser(Long id, User user){
         if(userRepository.existsById(id)){
             UserJPA userToUpdate = userRepository.findById(id).get();
+            
+            userToUpdate.setName(user.getName());
+            userToUpdate.setSurname(user.getSurname());
+            userToUpdate.setMail(user.getMail());
 
-            User User = mapEntityToUser(userToUpdate);
-
-            User.setName(user.getName());
-            User.setSurname(user.getSurname());
-            User.setMail(user.getMail());
-
-            userRepository.save(mapUserToEntity(User));
+            userRepository.save(userToUpdate);
 
             return user;
         }
@@ -91,8 +89,7 @@ public class UserService {
     }
 
     public UserJPA mapUserToEntity(User user) {
-        //UserJPA mapedJPA = modelMapper.map(User.class, UserJPA.class);
-        UserJPA mapedJPA = new UserJPA(user.getMail(), user.getName(), user.getMail());
+        UserJPA mapedJPA = new UserJPA(user.getMail(), user.getName(), user.getSurname());
         return mapedJPA;
     }
 

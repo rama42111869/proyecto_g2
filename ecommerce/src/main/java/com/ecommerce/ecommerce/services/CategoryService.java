@@ -1,6 +1,5 @@
 package com.ecommerce.ecommerce.services;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.ecommerce.DBModel.CategoryJPA;
 import com.ecommerce.ecommerce.model.Category;
 import com.ecommerce.ecommerce.repositories.ICategoryRepository;
+import java.util.ArrayList;
 @Service
 public class CategoryService {
 
@@ -21,7 +21,7 @@ public class CategoryService {
     private ICategoryRepository categoryRepository;
 
     public List<Category> getAllCategories() {
-        List<Category> allCategories = new LinkedList<Category>();
+        List<Category> allCategories = new ArrayList<>();
         for (CategoryJPA categoryJPA : categoryRepository.findAll()) {
             allCategories.add(mapEntityToCategory(categoryJPA));
         }
@@ -29,7 +29,7 @@ public class CategoryService {
     }
 
     public Category getOneCategory(String name) {
-        Optional<CategoryJPA> category = categoryRepository.findById(name);
+        Optional<CategoryJPA> category = categoryRepository.findByName(name);
         if(category.isPresent()){
             return mapEntityToCategory(category.get());
         }
@@ -50,20 +50,21 @@ public class CategoryService {
     }
 
     public Category updateCategory(String name, Category category) {
-        if(categoryRepository.existsById(name)){
-            CategoryJPA categoryToUpdate = categoryRepository.findById(name).get();
+        if(categoryRepository.findByName(name) != null){
+            Optional<CategoryJPA> categoryToUpdate = categoryRepository.findByName(name);          
 
-            Category categoryModel = mapEntityToCategory(categoryToUpdate);
+            categoryToUpdate.get().setName(category.getName());
+            categoryToUpdate.get().setSizes(category.getSizes());
+            categoryToUpdate.get().setProducts(categoryToUpdate.get().getProducts());
 
-            categoryModel.setName(category.getName());
-            categoryModel.setSizes(category.getSizes());
-
-            categoryRepository.save(mapCategoryToEntity(categoryModel));
+            categoryRepository.save(categoryToUpdate.get());
 
             return category;
         }
         return null;
     }
+    
+    
     /* MAPPERS */
 
     public Category mapEntityToCategory(CategoryJPA categoryJPA){
@@ -72,7 +73,7 @@ public class CategoryService {
     }
 
     public CategoryJPA mapCategoryToEntity(Category category){
-        CategoryJPA mapedJPA = new CategoryJPA(category.getName());
+        CategoryJPA mapedJPA = new CategoryJPA(category.getName(), category.getSizes());
         return mapedJPA;
     }
 

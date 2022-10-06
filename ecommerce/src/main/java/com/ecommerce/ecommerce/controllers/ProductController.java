@@ -40,19 +40,19 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PostMapping()
-    public ResponseEntity<Product> createOneProduct(@RequestBody Product product){
+    @PostMapping("/{categoryId}")
+    public ResponseEntity<Product> createOneProduct(@PathVariable Long categoryId, @RequestBody Product product){
         if(product != null){
-            productService.createNewProduct(product);
+            productService.createNewProduct(product, categoryId);
             return ResponseEntity.status(HttpStatus.CREATED).body(product);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Product> updateOneProduct(@PathVariable Long id, @RequestBody Product product){
+    @PutMapping("/{id}/{categoryId}")
+    public ResponseEntity<Product> updateOneProduct(@PathVariable Long id,@PathVariable Long categoryId, @RequestBody Product product){
         if(product != null){
-            productService.updateProduct(id, product);
+            productService.updateProduct(id, categoryId, product);
             return ResponseEntity.status(HttpStatus.OK).body(product);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(product);

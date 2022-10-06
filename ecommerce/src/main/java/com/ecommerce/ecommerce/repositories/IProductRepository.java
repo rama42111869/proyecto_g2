@@ -7,5 +7,5 @@ import com.ecommerce.ecommerce.DBModel.ProductJPA;
 
 @Repository
 public interface IProductRepository extends JpaRepository<ProductJPA, Long>{
-    
+
 }
