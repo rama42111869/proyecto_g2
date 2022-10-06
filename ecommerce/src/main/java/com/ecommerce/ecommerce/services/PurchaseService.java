@@ -87,10 +87,18 @@ public class PurchaseService {
         
         Optional<UserJPA> user = userRepository.findById(purchase.getUser().getId());
         
+//        UserJPA user = new UserJPA(purchase.getUser().getMail(), purchase.getUser().getName(), purchase.getUser().getSurname());
         
         PurchaseJPA purchaseJPA;
         purchaseJPA = new PurchaseJPA(new Date(System.currentTimeMillis()), purchase.getAmount(), product, user.get());
         
+//        PurchaseJPA purchaseJPA = new PurchaseJPA(
+//                purchase.getId(),
+//                productService.mapProductToEntity(purchase.getProduct()),
+//                userService.mapUserToEntity(purchase.getUser()),
+//                purchase.getAmount(),
+//                purchase.getDate()            
+//        );
            return purchaseJPA;
     }
 }
