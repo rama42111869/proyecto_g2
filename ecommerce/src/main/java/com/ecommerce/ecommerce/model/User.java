@@ -1,5 +1,6 @@
 package com.ecommerce.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -14,10 +15,14 @@ import lombok.Setter;
 public class User {
 
     private Long id;
+    
     private String name;
+    
     private String surname;
+    
     private String mail;
 
+    @JsonManagedReference
     private List<Purchase> purchases;
 
 }
