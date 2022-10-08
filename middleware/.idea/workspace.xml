@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="" />
+    <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Purchase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Connection/ApiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Connection/ApiConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,13 +56,18 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/EST/Devplace/Acel/proyecto_g2/ecommerce",
+    "last_opened_file_path": "D:/EST/Devplace/Acel/proyecto_g2/middleware",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.acel.middleware.config" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="MiddlewareApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.acel.middleware.MiddlewareApplication" />
@@ -83,5 +98,10 @@
       <updated>1663956814156</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/middleware$MiddlewareApplication.ic" NAME="MiddlewareApplication Coverage Results" MODIFIED="1665175708671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.acel.middleware.*</FILTER>
+    </SUITE>
   </component>
 </project>

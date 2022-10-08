@@ -17,9 +17,9 @@ public class ProductController {
         return ip.listAllPr();
     }
 
-    @PostMapping()
-    public ResponseEntity<Integer> create(@RequestBody Product user){
-        return ip.savePr(user);
+    @PostMapping("/{idC}")
+    public ResponseEntity<Integer> create(@PathVariable("idC") Long idC,@RequestBody Product product){
+        return ip.savePr(idC,product);º
     }
 
     @GetMapping("/{idP}")

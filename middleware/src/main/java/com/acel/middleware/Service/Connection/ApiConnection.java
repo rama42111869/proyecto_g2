@@ -28,7 +28,7 @@ public class ApiConnection {
                     connection = this.createConection("http://localhost:8080/api/products");
                     break;
                 case 'r':
-                    connection = this.createConection("http://localhost:8080/api/purchases");
+                    connection = this.createConection("http://localhost:8080/api/purchase");
                     break;
                 case 'c':
                     connection = this.createConection("http://localhost:8080/api/category");

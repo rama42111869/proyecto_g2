@@ -1,14 +1,30 @@
 package com.acel.middleware.Model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Purchase {
+
     private Long id;
+
+    @JsonIgnore
+    private Product product;
+
+    @JsonIgnore
+    private User user;
+
+    private int amount;
+
     private Date date;
-    private float amount;
+
+    public Purchase(int amount){
+        this.amount = amount;
+    }
+
 }

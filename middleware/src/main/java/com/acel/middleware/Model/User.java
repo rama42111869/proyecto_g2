@@ -1,12 +1,20 @@
 package com.acel.middleware.Model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
+
+    private Long id;
     private String name;
     private String surname;
-    private String email;
+    private String mail;
+
+    private List<Purchase> purchases;
+
 }
