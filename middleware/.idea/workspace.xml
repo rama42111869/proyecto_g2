@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ecommerce/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce/target/classes/com/ecommerce/ecommerce/EcommerceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/target/classes/com/ecommerce/ecommerce/EcommerceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce/target/test-classes/com/ecommerce/ecommerce/EcommerceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/target/test-classes/com/ecommerce/ecommerce/EcommerceApplicationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Connection/ApiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Connection/ApiConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/PurchaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/ICategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/ICategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IPurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IPurchaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/PurchaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +64,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/EST/Devplace/Acel/proyecto_g2/middleware",
+    "last_opened_file_path": "C:/Users/misae/Desktop/WorkSpace Java/proyecto_g2/middleware",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -99,8 +107,19 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/middleware$MiddlewareApplication.ic" NAME="MiddlewareApplication Coverage Results" MODIFIED="1665175708671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/middleware$MiddlewareApplication.ic" NAME="MiddlewareApplication Coverage Results" MODIFIED="1665273250399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.acel.middleware.*</FILTER>
     </SUITE>
   </component>

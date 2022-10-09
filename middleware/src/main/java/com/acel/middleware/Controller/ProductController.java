@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/middle/products")
 @RestController
-public class ProductController {
+public class    ProductController {
     @Autowired
     private IProductService ip;
 
@@ -17,19 +17,19 @@ public class ProductController {
         return ip.listAllPr();
     }
 
-    @PostMapping("/{idC}")
-    public ResponseEntity<Integer> create(@PathVariable("idC") Long idC,@RequestBody Product product){
-        return ip.savePr(idC,product);º
-    }
-
     @GetMapping("/{idP}")
     public ResponseEntity<Product> get(@PathVariable("idP") Long idP){
         return ip.readPr(idP);
     }
 
-    @PutMapping()
-    public ResponseEntity<Integer> update(@RequestBody Product user){
-        return ip.updatePr(user);
+    @PostMapping("/{idC}")
+    public ResponseEntity<Product> create(@PathVariable("idC") Long idC,@RequestBody Product product){
+        return ip.savePr(idC,product);
+    }
+
+    @PutMapping("/{idP}/{idC}")
+    public ResponseEntity<Integer> update(@PathVariable("idP") Long idP,@PathVariable("idC") Long idC,@RequestBody Product user){
+        return ip.updatePr(idP,idC,user);
     }
 
     @DeleteMapping("/{idP}")

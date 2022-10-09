@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/middle/categories")
+@RequestMapping("/middle/category")
+@RestController
 public class CategoryController {
     @Autowired
     private ICategoryService iC;
@@ -16,23 +17,23 @@ public class CategoryController {
         return iC.listAllC();
     }
 
-    @PostMapping()
-    public ResponseEntity<Integer> create(@RequestBody Category category){
-        return iC.saveC(category);
-    }
-
-    @GetMapping("/{idC}")
-    public ResponseEntity<Category> get(@PathVariable("idC") Long idC){
+    @GetMapping("/{name}")
+    public ResponseEntity<Category> getBy(@PathVariable("name") String idC){
         return iC.readC(idC);
     }
 
-    @PutMapping()
-    public ResponseEntity<Integer> update(@RequestBody Category category){
-        return iC.updateC(category);
+    @PostMapping()
+    public ResponseEntity<Category> create(@RequestBody Category category){
+        return iC.saveC(category);
     }
 
-    @DeleteMapping("/{idC}")
-    public ResponseEntity<Integer> delete(@PathVariable("idC") Long idC){
-        return iC.deleteC(idC);
+    @PutMapping("/{name}")
+    public ResponseEntity<Integer> update(@PathVariable("name") String name,@RequestBody Category category){
+        return iC.updateC(name,category);
+    }
+
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Integer> delete(@PathVariable("name") String name){
+        return iC.deleteC(name);
     }
 }

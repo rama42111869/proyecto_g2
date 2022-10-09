@@ -15,14 +15,14 @@ public class ProductService implements IProductService {
     private WebClient wCp = new ApiConnection('p').getClient();
 
     @Override
-    public ResponseEntity<Integer> savePr(Long idC,Product product) {
+    public ResponseEntity<Product> savePr(Long idC,Product product) {
         try {
-            ResponseEntity<Integer> rCp = wCp.post()
+            ResponseEntity<Product> rCp = wCp.post()
                     .uri("/"+idC)
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(product), Product.class)
                     .retrieve()
-                    .toEntity(Integer.class)
+                    .toEntity(Product.class)
                     .block();
             return rCp;
         }catch (WebClientResponseException e){
@@ -33,16 +33,16 @@ public class ProductService implements IProductService {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
             return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+                    .status(e.getStatusCode()).build();
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
         }
     }
 
     @Override
-    public ResponseEntity<Integer> deletePr(Long id) {
+    public ResponseEntity<Integer> deletePr(Long idP) {
         try {
             ResponseEntity<Integer> rDp = wCp.delete()
-                    .uri("/"+ id)
+                    .uri("/"+ idP)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
                     .toEntity(Integer.class)
@@ -62,9 +62,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<Integer> updatePr(Product product) {
+    public ResponseEntity<Integer> updatePr(Long idP,Long idC,Product product) {
         try {
             ResponseEntity<Integer> rUu = wCp.put()
+                    .uri("/"+idP+"/"+idC)
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(product),Product.class)
                     .retrieve()
@@ -85,9 +86,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<Product> readPr(Long id) {
+    public ResponseEntity<Product> readPr(Long idP) {
         try{
             ResponseEntity<Product> rBp = wCp.get()
+                    .uri("/"+idP)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
                     .toEntity(Product.class)

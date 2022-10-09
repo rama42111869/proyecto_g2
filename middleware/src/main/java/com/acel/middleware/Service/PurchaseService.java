@@ -15,13 +15,14 @@ public class PurchaseService implements IPurchaseService {
     private WebClient wCpu = new ApiConnection('r').getClient();
 
     @Override
-    public ResponseEntity<Integer> savePu(Purchase purchase) {
+    public ResponseEntity<Purchase> savePu(Long idP, Long idU, Purchase purchase) {
         try {
-            ResponseEntity<Integer> rCpu = wCpu.post()
+            ResponseEntity<Purchase> rCpu = wCpu.post()
+                    .uri("/"+idP+"/"+idU)
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(purchase), Purchase.class)
                     .retrieve()
-                    .toEntity(Integer.class)
+                    .toEntity(Purchase.class)
                     .block();
             return rCpu;
         }catch (WebClientResponseException e){
@@ -32,59 +33,59 @@ public class PurchaseService implements IPurchaseService {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
             return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+                    .status(e.getStatusCode()).build();
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
         }
     }
 
-    @Override
-    public ResponseEntity<Integer> deletePu(Long id) {
-        try {
-            ResponseEntity<Integer> rDpu = wCpu.delete()
-                    .uri("/"+ id)
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .retrieve()
-                    .toEntity(Integer.class)
-                    .block();
-            return rDpu;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
-                return ResponseEntity.internalServerError().build();
-            }
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
-        }
-    }
+//    @Override
+//    public ResponseEntity<Integer> deletePu(Long id) {
+//        try {
+//            ResponseEntity<Integer> rDpu = wCpu.delete()
+//                    .uri("/"+ id)
+//                    //.header("Authorization",SecurityConnection.getToken())
+//                    .retrieve()
+//                    .toEntity(Integer.class)
+//                    .block();
+//            return rDpu;
+//        }catch (WebClientResponseException e){
+//            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
+//                return ResponseEntity.internalServerError().build();
+//            }
+//            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+//                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//            }
+//            return ResponseEntity
+//                    .status(e.getStatusCode())
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+//        }
+//    }
+
+//    @Override
+//    public ResponseEntity<Integer> updatePu(Purchase purchase) {
+//        try {
+//            ResponseEntity<Integer> rUpu = wCpu.put()
+//                    //.header("Authorization",SecurityConnection.getToken())
+//                    .body(Mono.just(purchase),Purchase.class)
+//                    .retrieve()
+//                    .toEntity(Integer.class)
+//                    .block();
+//            return rUpu;
+//        }catch (WebClientResponseException e){
+//            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
+//                return ResponseEntity.internalServerError().build();
+//            }
+//            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+//                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//            }
+//            return ResponseEntity
+//                    .status(e.getStatusCode())
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+//        }
+//    }
 
     @Override
-    public ResponseEntity<Integer> updatePu(Purchase purchase) {
-        try {
-            ResponseEntity<Integer> rUpu = wCpu.put()
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .body(Mono.just(purchase),Purchase.class)
-                    .retrieve()
-                    .toEntity(Integer.class)
-                    .block();
-            return rUpu;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
-                return ResponseEntity.internalServerError().build();
-            }
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
-        }
-    }
-
-    @Override
-    public ResponseEntity<Purchase> readPu(Long id) {
+    public ResponseEntity<Purchase> readPu(Long idP) {
         try{
             ResponseEntity<Purchase> rBpu = wCpu.get()
                     //.header("Authorization",SecurityConnection.getToken())

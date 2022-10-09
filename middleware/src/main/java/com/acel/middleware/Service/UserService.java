@@ -1,6 +1,5 @@
 package com.acel.middleware.Service;
 
-import com.acel.middleware.Model.Purchase;
 import com.acel.middleware.Model.User;
 import com.acel.middleware.Service.Connection.ApiConnection;
 import com.acel.middleware.Service.Interface.IUserService;
@@ -16,13 +15,13 @@ public class UserService implements IUserService {
     private WebClient wCu = new ApiConnection('u').getClient();
 
     @Override
-    public ResponseEntity<Integer> saveU(User user) {
+    public ResponseEntity<User> saveU(User user) {
         try {
-            ResponseEntity<Integer> rCu = wCu.post()
+            ResponseEntity<User> rCu = wCu.post()
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(user), User.class)
                     .retrieve()
-                    .toEntity(Integer.class)
+                    .toEntity(User.class)
                     .block();
             return rCu;
         }catch (WebClientResponseException e){
@@ -33,16 +32,16 @@ public class UserService implements IUserService {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
             return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+                    .status(e.getStatusCode()).build();
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
         }
     }
 
     @Override
-    public ResponseEntity<Integer> deleteU(Long id) {
+    public ResponseEntity<Integer> deleteU(Long idU) {
         try {
             ResponseEntity<Integer> rDu = wCu.delete()
-                    .uri("/"+ id)
+                    .uri("/"+ idU)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
                     .toEntity(Integer.class)
@@ -62,9 +61,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ResponseEntity<Integer> updateMyUser(User user) {
+    public ResponseEntity<Integer> updateUser(Long idU,User user) {
         try {
             ResponseEntity<Integer> rUu = wCu.put()
+                    .uri("/"+idU)
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(user),User.class)
                     .retrieve()
@@ -85,14 +85,15 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ResponseEntity<User> readUByUsername(String username) {
+    public ResponseEntity<User> readUById(Long idU) {
         try{
-            ResponseEntity<User> rBu = wCu.get()
+            ResponseEntity<User> rBi = wCu.get()
+                    .uri("/"+idU)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
                     .toEntity(User.class)
                     .block();
-            return rBu;
+            return rBi;
         }catch (WebClientResponseException e){
             if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

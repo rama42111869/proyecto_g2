@@ -15,13 +15,13 @@ public class CategoryService implements ICategoryService {
     private WebClient wCc = new ApiConnection('c').getClient();
 
     @Override
-    public ResponseEntity<Integer> saveC(Category category) {
+    public ResponseEntity<Category> saveC(Category category) {
         try {
-            ResponseEntity<Integer> rCc = wCc.post()
+            ResponseEntity<Category> rCc = wCc.post()
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(category), Category.class)
                     .retrieve()
-                    .toEntity(Integer.class)
+                    .toEntity(Category.class)
                     .block();
             return rCc;
         }catch (WebClientResponseException e){
@@ -32,16 +32,17 @@ public class CategoryService implements ICategoryService {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
             return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+                    .status(e.getStatusCode()).build();
+            //                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+
         }
     }
 
     @Override
-    public ResponseEntity<Integer> deleteC(Long id) {
+    public ResponseEntity<Integer> deleteC(String name) {
         try {
             ResponseEntity<Integer> rDc = wCc.delete()
-                    .uri("/"+ id)
+                    .uri("/"+ name)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
                     .toEntity(Integer.class)
@@ -61,9 +62,10 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public ResponseEntity<Integer> updateC(Category category) {
+    public ResponseEntity<Integer> updateC(String name,Category category) {
         try {
             ResponseEntity<Integer> rUc = wCc.put()
+                    .uri("/"+name)
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(category),Category.class)
                     .retrieve()
@@ -84,7 +86,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public ResponseEntity<Category> readC(Long id) {
+    public ResponseEntity<Category> readC(String name) {
         try{
             ResponseEntity<Category> rBc = wCc.get()
                     //.header("Authorization",SecurityConnection.getToken())

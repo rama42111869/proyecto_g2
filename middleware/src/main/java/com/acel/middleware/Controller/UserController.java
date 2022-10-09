@@ -18,18 +18,18 @@ public class UserController {
         }
 
         @PostMapping()
-        public ResponseEntity<Integer> create(@RequestBody User user){
+        public ResponseEntity<User> create(@RequestBody User user){
             return iU.saveU(user);
         }
 
-        @GetMapping("/{username}")
-        public ResponseEntity<User> get(@PathVariable("username") String idU){
-            return iU.readUByUsername(idU);
+        @GetMapping("/{idU}")
+        public ResponseEntity<User> get(@PathVariable("idU") Long idU){
+            return iU.readUById(idU);
         }
 
-        @PutMapping()
-        public ResponseEntity<Integer> update(@RequestBody User user){
-            return iU.updateMyUser(user);
+        @PutMapping("/{idU}")
+        public ResponseEntity<Integer> update(@PathVariable("idU") Long idU, @RequestBody User user){
+            return iU.updateUser(idU,user);
         }
 
         @DeleteMapping("/{idU}")

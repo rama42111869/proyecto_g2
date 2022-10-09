@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/middle/purchases")
+@RequestMapping("/middle/purchase")
+@RestController
 public class PurchaseController {
     @Autowired
     private IPurchaseService ip;
@@ -16,23 +17,25 @@ public class PurchaseController {
         return ip.listAllPu();
     }
 
-    @PostMapping()
-    public ResponseEntity<Integer> create(@RequestBody Purchase purchase){
-        return ip.savePu(purchase);
-    }
-
     @GetMapping("/{idP}")
     public ResponseEntity<Purchase> get(@PathVariable("idP") Long idP){
         return ip.readPu(idP);
     }
 
-    @PutMapping()
-    public ResponseEntity<Integer> update(@RequestBody Purchase purchase){
-        return ip.updatePu(purchase);
+    @PostMapping("/{idP}/{idU}")
+    public ResponseEntity<Purchase> create(@PathVariable("idP") Long idP,@PathVariable("idU") Long idU,@RequestBody Purchase purchase){
+        return ip.savePu(idP,idU,purchase);
     }
 
-    @DeleteMapping("/{idP}")
-    public ResponseEntity<Integer> delete(@PathVariable("idP") Long idP){
-        return ip.deletePu(idP);
-    }
+
+
+//    @PutMapping()
+//    public ResponseEntity<Integer> update(@RequestBody Purchase purchase){
+//        return ip.updatePu(purchase);
+//    }
+//
+//    @DeleteMapping("/{idP}")
+//    public ResponseEntity<Integer> delete(@PathVariable("idP") Long idP){
+//        return ip.deletePu(idP);
+//    }
 }
