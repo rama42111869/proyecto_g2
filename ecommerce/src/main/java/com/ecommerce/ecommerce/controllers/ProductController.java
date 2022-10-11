@@ -39,6 +39,13 @@ public class ProductController {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+    
+    @GetMapping("/carrouselProducts")
+    public ResponseEntity<List<Product>> listProductsForCarroussel(){
+        List<Product> productsForCarroussel = productService.getProductsForCarrousel();
+        
+        return ResponseEntity.status(HttpStatus.OK).body(productsForCarroussel);
+    }
 
     @PostMapping("/{categoryId}")
     public ResponseEntity<Product> createOneProduct(@PathVariable Long categoryId, @RequestBody Product product){
