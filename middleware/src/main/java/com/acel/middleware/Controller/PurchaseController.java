@@ -26,9 +26,6 @@ public class PurchaseController {
     public ResponseEntity<Purchase> create(@PathVariable("idP") Long idP,@PathVariable("idU") Long idU,@RequestBody Purchase purchase){
         return ip.savePu(idP,idU,purchase);
     }
-
-
-
 //    @PutMapping()
 //    public ResponseEntity<Integer> update(@RequestBody Purchase purchase){
 //        return ip.updatePu(purchase);

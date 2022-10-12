@@ -31,6 +31,23 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public ResponseEntity<Product[]> listPrCarrousel() {
+        try{
+            ResponseEntity<Product[]> rLpr = wCpr.get()
+                    .uri("/carrouselProducts")
+                    .retrieve()
+                    .toEntity(Product[].class)
+                    .block();
+            return rLpr;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @Override
     public ResponseEntity<Product> readPr(Long idP) {
         try{
             ResponseEntity<Product> rRpr = wCpr.get()
@@ -118,10 +135,4 @@ public class ProductService implements IProductService {
                     .body((Integer.valueOf(e.getResponseBodyAsString())));
         }
     }
-
-
-
-
-
-
 }

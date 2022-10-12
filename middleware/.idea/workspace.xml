@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ecommerce/src/main/java/com/ecommerce/ecommerce/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/main/java/com/ecommerce/ecommerce/controllers/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/ICategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/ICategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/PurchaseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IPurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IPurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/PurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

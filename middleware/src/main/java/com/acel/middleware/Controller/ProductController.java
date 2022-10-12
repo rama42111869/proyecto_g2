@@ -3,8 +3,11 @@ package com.acel.middleware.Controller;
 import com.acel.middleware.Model.Product;
 import com.acel.middleware.Service.Interface.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/middle/products")
 @RestController
@@ -15,6 +18,11 @@ public class    ProductController {
     @GetMapping()
     public ResponseEntity<Product[]> listAll(){
         return ip.listAllPr();
+    }
+
+    @GetMapping("/carrouselProducts")
+    public ResponseEntity<Product[]> listAllCarrousel(){
+        return ip.listPrCarrousel();
     }
 
     @GetMapping("/{idP}")
