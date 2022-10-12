@@ -28,7 +28,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{name}")
-    public ResponseEntity<Integer> update(@PathVariable("name") String name,@RequestBody Category category){
+    public ResponseEntity<Category> update(@PathVariable("name") String name,@RequestBody Category category){
         return iC.updateC(name,category);
     }
 

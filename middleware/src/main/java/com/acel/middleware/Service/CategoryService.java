@@ -15,15 +15,50 @@ public class CategoryService implements ICategoryService {
     private WebClient wCc = new ApiConnection('c').getClient();
 
     @Override
+    public ResponseEntity<Category[]> listAllC() {
+        try{
+            ResponseEntity<Category[]> rLc =wCc.get()
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .retrieve()
+                    .toEntity(Category[].class)
+                    .block();
+            return rLc;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<Category> readC(String name) {
+        try{
+            ResponseEntity<Category> rRc = wCc.get()
+                    .uri("/"+name)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .retrieve()
+                    .toEntity(Category.class)
+                    .block();
+            return rRc;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @Override
     public ResponseEntity<Category> saveC(Category category) {
         try {
-            ResponseEntity<Category> rCc = wCc.post()
+            ResponseEntity<Category> rSc = wCc.post()
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(category), Category.class)
                     .retrieve()
                     .toEntity(Category.class)
                     .block();
-            return rCc;
+            return rSc;
         }catch (WebClientResponseException e){
             if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
                 return ResponseEntity.internalServerError().build();
@@ -34,7 +69,30 @@ public class CategoryService implements ICategoryService {
             return ResponseEntity
                     .status(e.getStatusCode()).build();
             //                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+        }
+    }
 
+    @Override
+    public ResponseEntity<Category> updateC(String name, Category category) {
+        try {
+            ResponseEntity<Category> rUc = wCc.put()
+                    .uri("/"+name)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .body(Mono.just(category),Category.class)
+                    .retrieve()
+                    .toEntity(Category.class)
+                    .block();
+            return rUc;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
+                return ResponseEntity.internalServerError().build();
+            }
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity
+                    .status(e.getStatusCode()).build();
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
         }
     }
 
@@ -58,64 +116,6 @@ public class CategoryService implements ICategoryService {
             return ResponseEntity
                     .status(e.getStatusCode())
                     .body((Integer.valueOf(e.getResponseBodyAsString())));
-        }
-    }
-
-    @Override
-    public ResponseEntity<Integer> updateC(String name,Category category) {
-        try {
-            ResponseEntity<Integer> rUc = wCc.put()
-                    .uri("/"+name)
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .body(Mono.just(category),Category.class)
-                    .retrieve()
-                    .toEntity(Integer.class)
-                    .block();
-            return rUc;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
-                return ResponseEntity.internalServerError().build();
-            }
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
-        }
-    }
-
-    @Override
-    public ResponseEntity<Category> readC(String name) {
-        try{
-            ResponseEntity<Category> rBc = wCc.get()
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .retrieve()
-                    .toEntity(Category.class)
-                    .block();
-            return rBc;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity.internalServerError().build();
-        }
-    }
-
-    @Override
-    public ResponseEntity<Category[]> listAllC() {
-        try{
-            ResponseEntity<Category[]> lAc =wCc.get()
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .retrieve()
-                    .toEntity(Category[].class)
-                    .block();
-            return lAc;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity.internalServerError().build();
         }
     }
 }

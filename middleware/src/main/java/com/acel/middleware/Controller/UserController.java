@@ -14,7 +14,7 @@ public class UserController {
 
         @GetMapping()
         public ResponseEntity<User[]> listAll(){
-            return iU.listAllUsers();
+            return iU.listAllU();
         }
 
         @PostMapping()
@@ -24,12 +24,12 @@ public class UserController {
 
         @GetMapping("/{idU}")
         public ResponseEntity<User> get(@PathVariable("idU") Long idU){
-            return iU.readUById(idU);
+            return iU.readU(idU);
         }
 
         @PutMapping("/{idU}")
         public ResponseEntity<Integer> update(@PathVariable("idU") Long idU, @RequestBody User user){
-            return iU.updateUser(idU,user);
+            return iU.updateU(idU,user);
         }
 
         @DeleteMapping("/{idU}")

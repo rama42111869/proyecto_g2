@@ -9,5 +9,4 @@ public interface IPurchaseService {
     ResponseEntity<Purchase> savePu(Long idP,Long idU,Purchase purchase);
 //    ResponseEntity<Integer> deletePu(Long id);
 //    ResponseEntity<Integer> updatePu(Purchase purchase);
-
 }

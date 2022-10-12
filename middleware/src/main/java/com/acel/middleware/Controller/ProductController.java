@@ -28,7 +28,7 @@ public class    ProductController {
     }
 
     @PutMapping("/{idP}/{idC}")
-    public ResponseEntity<Integer> update(@PathVariable("idP") Long idP,@PathVariable("idC") Long idC,@RequestBody Product user){
+    public ResponseEntity<Product> update(@PathVariable("idP") Long idP,@PathVariable("idC") Long idC,@RequestBody Product user){
         return ip.updatePr(idP,idC,user);
     }
 

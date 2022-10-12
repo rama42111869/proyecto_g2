@@ -12,19 +12,77 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class ProductService implements IProductService {
-    private WebClient wCp = new ApiConnection('p').getClient();
+    private WebClient wCpr = new ApiConnection('p').getClient();
+
+    @Override
+    public ResponseEntity<Product[]> listAllPr() {
+        try{
+            ResponseEntity<Product[]> rLpr = wCpr.get()
+                    .retrieve()
+                    .toEntity(Product[].class)
+                    .block();
+            return rLpr;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<Product> readPr(Long idP) {
+        try{
+            ResponseEntity<Product> rRpr = wCpr.get()
+                    .uri("/"+idP)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .retrieve()
+                    .toEntity(Product.class)
+                    .block();
+            return rRpr;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
     @Override
     public ResponseEntity<Product> savePr(Long idC,Product product) {
         try {
-            ResponseEntity<Product> rCp = wCp.post()
+            ResponseEntity<Product> rSpr = wCpr.post()
                     .uri("/"+idC)
                     //.header("Authorization",SecurityConnection.getToken())
                     .body(Mono.just(product), Product.class)
                     .retrieve()
                     .toEntity(Product.class)
                     .block();
-            return rCp;
+            return rSpr;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
+                return ResponseEntity.internalServerError().build();
+            }
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity
+                    .status(e.getStatusCode()).build();
+//                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+        }
+    }
+
+    @Override
+    public ResponseEntity<Product> updatePr(Long idP, Long idC, Product product) {
+        try {
+            ResponseEntity<Product> rUpr = wCpr.put()
+                    .uri("/"+idP+"/"+idC)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .body(Mono.just(product),Product.class)
+                    .retrieve()
+                    .toEntity(Product.class)
+                    .block();
+            return rUpr;
         }catch (WebClientResponseException e){
             if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
                 return ResponseEntity.internalServerError().build();
@@ -41,7 +99,7 @@ public class ProductService implements IProductService {
     @Override
     public ResponseEntity<Integer> deletePr(Long idP) {
         try {
-            ResponseEntity<Integer> rDp = wCp.delete()
+            ResponseEntity<Integer> rDp = wCpr.delete()
                     .uri("/"+ idP)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
@@ -61,61 +119,9 @@ public class ProductService implements IProductService {
         }
     }
 
-    @Override
-    public ResponseEntity<Integer> updatePr(Long idP,Long idC,Product product) {
-        try {
-            ResponseEntity<Integer> rUu = wCp.put()
-                    .uri("/"+idP+"/"+idC)
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .body(Mono.just(product),Product.class)
-                    .retrieve()
-                    .toEntity(Integer.class)
-                    .block();
-            return rUu;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
-                return ResponseEntity.internalServerError().build();
-            }
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity
-                    .status(e.getStatusCode())
-                    .body((Integer.valueOf(e.getResponseBodyAsString())));
-        }
-    }
 
-    @Override
-    public ResponseEntity<Product> readPr(Long idP) {
-        try{
-            ResponseEntity<Product> rBp = wCp.get()
-                    .uri("/"+idP)
-                    //.header("Authorization",SecurityConnection.getToken())
-                    .retrieve()
-                    .toEntity(Product.class)
-                    .block();
-            return rBp;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity.internalServerError().build();
-        }
-    }
 
-    @Override
-    public ResponseEntity<Product[]> listAllPr() {
-        try{
-            ResponseEntity<Product[]> lAp =wCp.get()
-                    .retrieve()
-                    .toEntity(Product[].class)
-                    .block();
-            return lAp;
-        }catch (WebClientResponseException e){
-            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-            return ResponseEntity.internalServerError().build();
-        }
-    }
+
+
+
 }
