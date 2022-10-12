@@ -13,6 +13,7 @@ import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.repositories.ICategoryRepository;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
 import java.util.ArrayList;
+import java.util.Random;
 
 @Service
 public class ProductService {
@@ -93,6 +94,34 @@ public class ProductService {
             return productToReturn;
         }
         return null;
+    }
+    
+    public List<Product> getProductsForCarrousel(){
+        Random rand = new Random();
+        
+        List<Product> allProducts = getAllProducts();
+        
+        List<Long> idsList = new ArrayList<>();
+        
+        allProducts.forEach(prod -> {
+            idsList.add(prod.getId());
+        });
+        
+        List<Product> productsForCarroussel = new ArrayList<>();
+        
+        Long leftRange = 1L;
+        Long rightRange = Long.valueOf(idsList.size());
+        
+        for(int i = 0; i<16; i++){
+            Long randomLongId = leftRange + (long)(Math.random() * (rightRange - leftRange));
+            int randomIdInt = randomLongId.intValue();
+            
+            Product prodToAdd =  allProducts.get(randomIdInt);
+            
+            productsForCarroussel.add(prodToAdd);
+        }
+        
+        return productsForCarroussel;
     }
 
 
