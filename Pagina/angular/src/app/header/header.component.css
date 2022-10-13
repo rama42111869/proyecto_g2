@@ -189,7 +189,7 @@ svg{
     opacity: 1;
   }
 */
-
+/*EN ESTUDIO DE SERACH POR PABLO
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;
@@ -232,7 +232,7 @@ svg{
   border-radius: 50%;
   color: #99A57B;
   text-decoration: none;
-}
+}*/
 
 /*.container-fluid-init{
     width: 30%;
@@ -249,10 +249,17 @@ svg{
 }*/
 
 .bi {
-  width: 2em;
-  height: 2em;
+  width: 2.8em;
+  height: 2.8em;
   color: #594C4F;
   /*font-size: ;*/
   border: 0;
-  margin: 0.5em;
+  margin-left: 1.8em;
+  margin-right: 1.8em;
+}
+.btn {
+  margin-right: 2em;
+}
+.form-control {
+  margin-left: 2em;
 }
