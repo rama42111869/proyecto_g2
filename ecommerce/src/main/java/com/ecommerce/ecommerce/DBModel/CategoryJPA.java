@@ -23,11 +23,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryJPA {
-//    @Id
-//    private String name;
-//    private String sizes;
-//    @OneToMany(mappedBy = "category")
-//    private Set<ProductJPA> products;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -28,23 +28,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductJPA {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//    @Column(nullable = false)
-//    private String name;
-//    @Column(columnDefinition = "text")
-//    private String description;
-//    @Column(nullable = false)
-//    private float price;
-//    @Column(columnDefinition = "text")
-//    private String images;
-//    private String brand;
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "category", nullable = false)
-//    private CategoryJPA category;
-//    @OneToMany(mappedBy = "product")
-//    private Set<PurchaseJPA> purchases;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
