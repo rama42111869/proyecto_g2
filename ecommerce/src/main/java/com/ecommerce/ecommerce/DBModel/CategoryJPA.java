@@ -1,6 +1,5 @@
 package com.ecommerce.ecommerce.DBModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
