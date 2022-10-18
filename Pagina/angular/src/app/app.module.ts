@@ -7,15 +7,23 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
 import { AsComponent } from './as/as.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProductComponent } from './product/product.component';
+import { PurchaseHistoryComponent } from './purchaseHistory/purchaseHistory.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
-  declarations: [
+  declarations: [				
     AppComponent,
     HeaderComponent,
     FooterComponent,
     BodyComponent,
-    AsComponent
-  ],
+    AsComponent,
+      ProfileComponent,
+      ProductComponent,
+      PurchaseHistoryComponent,
+      PaymentComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule
