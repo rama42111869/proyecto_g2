@@ -1,6 +1,5 @@
 package com.ecommerce.ecommerce.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
@@ -17,11 +16,10 @@ public class Purchase {
 
     private Long id;   
     
-
-    @JsonBackReference
+    @JsonIgnore
     private Product product;
     
-    @JsonBackReference
+    @JsonIgnore
     private User user;
     
     private int amount;

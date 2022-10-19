@@ -22,7 +22,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryJPA {
-
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -51,7 +51,14 @@ public class CategoryService {
 
     public Category updateCategory(String name, Category category) {
         if(categoryRepository.findByName(name) != null){
-            Optional<CategoryJPA> categoryToUpdate = categoryRepository.findByName(name);          
+            Optional<CategoryJPA> categoryToUpdate = categoryRepository.findByName(name);
+
+//            Category categoryModel = mapEntityToCategory(categoryToUpdate.get());
+//
+//            categoryModel.setName(category.getName());
+//            categoryModel.setSizes(category.getSizes());
+
+            
 
             categoryToUpdate.get().setName(category.getName());
             categoryToUpdate.get().setSizes(category.getSizes());
@@ -63,8 +70,6 @@ public class CategoryService {
         }
         return null;
     }
-    
-    
     /* MAPPERS */
 
     public Category mapEntityToCategory(CategoryJPA categoryJPA){

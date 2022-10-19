@@ -1,3 +1,4 @@
+/*
 .parent {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -11,11 +12,12 @@
   .div3 { grid-area: 1 / 7 / 2 / 8; }
   .div4 { grid-area: 1 / 8 / 2 / 9; }
   .div5 { grid-area: 1 / 2 / 2 / 7; }
-
+*/
 
 
 /* BARRA 2 */
 
+/*
 .container-search{
   display: inline;
   min-height: 100vh;
@@ -64,9 +66,10 @@
     right: 2px;
   }
 
-
+*/
 
 /*icono desplegable*/
+/*
   .main{
   width: 60px;
   cursor: pointer;
@@ -185,3 +188,78 @@ svg{
     visibility: visible;
     opacity: 1;
   }
+*/
+/*EN ESTUDIO DE SERACH POR PABLO
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #8899885e;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.search_input {
+  color: black;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_input {
+  padding: 0 10px;
+  width: 450px;
+  caret-color: black;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover>.search_icon {
+  background: #594C4F;
+  color: #99A57B;
+}
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #99A57B;
+  text-decoration: none;
+}*/
+
+/*.container-fluid-init{
+    width: 30%;
+  }*/
+
+/*.Willy {
+  position: fixed;
+  left: 50%;
+}
+
+.Wonka {
+  position: left;
+  right: 50%;
+}*/
+
+.bi {
+  width: 2.8em;
+  height: 2.8em;
+  color: #594C4F;
+  /*font-size: ;*/
+  border: 0;
+  margin-left: 1.8em;
+  margin-right: 1.8em;
+}
+.btn {
+  margin-right: 2em;
+}
+.form-control {
+  margin-left: 2em;
+}

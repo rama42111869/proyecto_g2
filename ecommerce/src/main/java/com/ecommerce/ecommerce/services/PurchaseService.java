@@ -1,9 +1,8 @@
 package com.ecommerce.ecommerce.services;
 
 import com.ecommerce.ecommerce.DBModel.ProductJPA;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import com.ecommerce.ecommerce.model.Purchase;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
 import com.ecommerce.ecommerce.repositories.IPurchaseRepository;
 import com.ecommerce.ecommerce.repositories.IUserRepository;
-import java.util.Date;
 
 @Service
 public class PurchaseService {
@@ -58,6 +56,20 @@ public class PurchaseService {
         }
     }
 
+    public List<Purchase> getPurchaseByUserId(Long userId){
+        List<PurchaseJPA> purchaseById = purchaseRepository.findByUserId(userId);
+        List<Purchase> purchasesDTO = new ArrayList<>();
+
+        if(purchaseById != null){
+            purchaseById.forEach(p -> {
+                purchasesDTO.add(mapEntityToPurchase(p));
+            });
+
+            return purchasesDTO;
+        }
+        return null;
+    }
+
     public Purchase createNewPurchase(Purchase purchase, Long productId, Long userId) {
         if(purchase != null){
             
@@ -87,10 +99,11 @@ public class PurchaseService {
         
         Optional<UserJPA> user = userRepository.findById(purchase.getUser().getId());
         
-        
+
         PurchaseJPA purchaseJPA;
         purchaseJPA = new PurchaseJPA(new Date(System.currentTimeMillis()), purchase.getAmount(), product, user.get());
         
+
            return purchaseJPA;
     }
 }

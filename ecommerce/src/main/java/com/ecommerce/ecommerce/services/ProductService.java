@@ -13,6 +13,7 @@ import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.repositories.ICategoryRepository;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
 import java.util.ArrayList;
+import java.util.Random;
 
 @Service
 public class ProductService {
@@ -35,6 +36,42 @@ public class ProductService {
         else {
             return null;
         }
+    }
+
+    public List<Product> getProductsByCategory(String category){
+        List<ProductJPA> productsJPA = productRepository.findByCategoryName(category);
+        List<Product> productsDTO = new ArrayList<>();
+
+        productsJPA.forEach(p -> {
+            Product prodDTO = mapEntityToProduct(p);
+            productsDTO.add(prodDTO);
+        });
+
+        if(!productsDTO.isEmpty()){
+            return productsDTO;
+        }
+        return null;
+    }
+
+    public List<Product> getPorductsBySearchBar(String name, String description, String brand, String category){
+        List<ProductJPA> productsJPA = productRepository
+                .findByNameContainingOrDescriptionContainingOrBrandContainingOrCategoryNameContaining(
+                        name,
+                        description,
+                        brand,
+                        category
+                );
+        List<Product> productsDTO = new ArrayList<>();
+
+        productsJPA.forEach(p -> {
+            Product prodDTO = mapEntityToProduct(p);
+            productsDTO.add(prodDTO);
+        });
+
+        if(!productsDTO.isEmpty()){
+            return productsDTO;
+        }
+        return null;
     }
 
     public List<Product> getAllProducts(){
@@ -93,6 +130,34 @@ public class ProductService {
             return productToReturn;
         }
         return null;
+    }
+    
+    public List<Product> getProductsForCarrousel(){
+        Random rand = new Random();
+        
+        List<Product> allProducts = getAllProducts();
+        
+        List<Long> idsList = new ArrayList<>();
+        
+        allProducts.forEach(prod -> {
+            idsList.add(prod.getId());
+        });
+        
+        List<Product> productsForCarroussel = new ArrayList<>();
+        
+        Long leftRange = 1L;
+        Long rightRange = Long.valueOf(idsList.size());
+        
+        for(int i = 0; i<16; i++){
+            Long randomLongId = leftRange + (long)(Math.random() * (rightRange - leftRange));
+            int randomIdInt = randomLongId.intValue();
+            
+            Product prodToAdd =  allProducts.get(randomIdInt);
+            
+            productsForCarroussel.add(prodToAdd);
+        }
+        
+        return productsForCarroussel;
     }
 
 

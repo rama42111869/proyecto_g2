@@ -5,14 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.services.ProductService;
@@ -38,6 +31,35 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.OK).body(product);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    //Listar productos segun la categoria
+    
+    @GetMapping("/carrouselProducts")
+    public ResponseEntity<List<Product>> listProductsForCarroussel(){
+        List<Product> productsForCarroussel = productService.getProductsForCarrousel();
+        
+        return ResponseEntity.status(HttpStatus.OK).body(productsForCarroussel);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> listProductsInSearchBar(@RequestParam String param){
+        List<Product> productsFromSearch = productService.getPorductsBySearchBar(param,param,param,param);
+
+        if(productsFromSearch != null){
+            return ResponseEntity.ok().body(productsFromSearch);
+        }
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/category")
+    public ResponseEntity<List<Product>> listProductsByCategory(@RequestParam String param){
+        List<Product> productsByCategory = productService.getProductsByCategory(param);
+
+        if(productsByCategory != null){
+            return ResponseEntity.ok().body(productsByCategory);
+        }
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/{categoryId}")

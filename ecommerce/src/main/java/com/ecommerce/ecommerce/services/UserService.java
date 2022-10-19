@@ -60,6 +60,14 @@ public class UserService {
             userToUpdate.setSurname(user.getSurname());
             userToUpdate.setMail(user.getMail());
 
+//            User User = mapEntityToUser(userToUpdate);
+//
+//            User.setName(user.getName());
+//            User.setSurname(user.getSurname());
+//            User.setMail(user.getMail());
+
+//            userRepository.save(mapUserToEntity(User));
+
             userRepository.save(userToUpdate);
 
             return user;
@@ -89,6 +97,7 @@ public class UserService {
     }
 
     public UserJPA mapUserToEntity(User user) {
+        //UserJPA mapedJPA = modelMapper.map(User.class, UserJPA.class);
         UserJPA mapedJPA = new UserJPA(user.getMail(), user.getName(), user.getSurname());
         return mapedJPA;
     }

@@ -38,6 +38,18 @@ public class PurchaseController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    //Listar compras segun un usuario
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Purchase>> listOnePurchaseByUser(@PathVariable Long userId){
+        List<Purchase> purchase = purchaseService.getPurchaseByUserId(userId);
+
+        if(!purchase.isEmpty()){
+            return ResponseEntity.ok().body(purchase);
+        }
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping("/{productId}/{userId}")
     public ResponseEntity<Purchase> createOnePurchase(@PathVariable Long productId, @PathVariable Long userId, @RequestBody Purchase purchase){
         if(purchase != null){
