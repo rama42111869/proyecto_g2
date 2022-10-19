@@ -1,6 +1,5 @@
 package com.ecommerce.ecommerce.DBModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
@@ -23,11 +22,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryJPA {
-//    @Id
-//    private String name;
-//    private String sizes;
-//    @OneToMany(mappedBy = "category")
-//    private Set<ProductJPA> products;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
