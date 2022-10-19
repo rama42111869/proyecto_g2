@@ -38,6 +38,42 @@ public class ProductService {
         }
     }
 
+    public List<Product> getProductsByCategory(String category){
+        List<ProductJPA> productsJPA = productRepository.findByCategoryName(category);
+        List<Product> productsDTO = new ArrayList<>();
+
+        productsJPA.forEach(p -> {
+            Product prodDTO = mapEntityToProduct(p);
+            productsDTO.add(prodDTO);
+        });
+
+        if(!productsDTO.isEmpty()){
+            return productsDTO;
+        }
+        return null;
+    }
+
+    public List<Product> getPorductsBySearchBar(String name, String description, String brand, String category){
+        List<ProductJPA> productsJPA = productRepository
+                .findByNameContainingOrDescriptionContainingOrBrandContainingOrCategoryNameContaining(
+                        name,
+                        description,
+                        brand,
+                        category
+                );
+        List<Product> productsDTO = new ArrayList<>();
+
+        productsJPA.forEach(p -> {
+            Product prodDTO = mapEntityToProduct(p);
+            productsDTO.add(prodDTO);
+        });
+
+        if(!productsDTO.isEmpty()){
+            return productsDTO;
+        }
+        return null;
+    }
+
     public List<Product> getAllProducts(){
         List<Product> allProducts = new ArrayList<>();
     
