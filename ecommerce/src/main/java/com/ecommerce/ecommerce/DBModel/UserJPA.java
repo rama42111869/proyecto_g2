@@ -32,7 +32,8 @@ public class UserJPA {
     private String surname;
     
     private String mail;
-    
+
+
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<PurchaseJPA> purchases;

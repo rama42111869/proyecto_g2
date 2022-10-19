@@ -32,6 +32,24 @@ public class PurchaseService implements IPurchaseService {
     }
 
     @Override
+    public ResponseEntity<Purchase[]> listPubyUS(Long idU) {
+        try{
+            ResponseEntity<Purchase[]> rLpuUs =wCpu.get()
+                    .uri("/user/"+idU)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .retrieve()
+                    .toEntity(Purchase[].class)
+                    .block();
+            return rLpuUs;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @Override
     public ResponseEntity<Purchase> readPu(Long idP) {
         try{
             ResponseEntity<Purchase> rRpu = wCpu.get()

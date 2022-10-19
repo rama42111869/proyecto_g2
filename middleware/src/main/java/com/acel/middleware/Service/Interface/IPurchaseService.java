@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 public interface IPurchaseService {
     ResponseEntity<Purchase[]> listAllPu();
     ResponseEntity<Purchase> readPu(Long idP);
+
+    ResponseEntity<Purchase[]> listPubyUS(Long idu);
     ResponseEntity<Purchase> savePu(Long idP,Long idU,Purchase purchase);
 //    ResponseEntity<Integer> deletePu(Long id);
 //    ResponseEntity<Integer> updatePu(Purchase purchase);

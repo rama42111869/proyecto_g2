@@ -45,7 +45,6 @@ public class ProductController {
     @GetMapping("/search")
     public ResponseEntity<List<Product>> listProductsInSearchBar(@RequestParam String param){
         List<Product> productsFromSearch = productService.getPorductsBySearchBar(param,param,param,param);
-
         if(productsFromSearch != null){
             return ResponseEntity.ok().body(productsFromSearch);
         }

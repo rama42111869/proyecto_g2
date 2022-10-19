@@ -25,6 +25,17 @@ public class    ProductController {
         return ip.listPrCarrousel();
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<Product[]> listProductsInSearchBar(@RequestParam String param){
+        return ip.listPrSearchBar(param);
+    }
+
+    @GetMapping("/category")
+    public ResponseEntity<Product[]> listProductsCategory(@RequestParam String param){
+        return ip.listPrCategory(param);
+    }
+
+
     @GetMapping("/{idP}")
     public ResponseEntity<Product> get(@PathVariable("idP") Long idP){
         return ip.readPr(idP);

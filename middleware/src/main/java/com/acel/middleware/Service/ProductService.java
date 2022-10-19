@@ -33,12 +33,12 @@ public class ProductService implements IProductService {
     @Override
     public ResponseEntity<Product[]> listPrCarrousel() {
         try{
-            ResponseEntity<Product[]> rLpr = wCpr.get()
+            ResponseEntity<Product[]> rLprC = wCpr.get()
                     .uri("/carrouselProducts")
                     .retrieve()
                     .toEntity(Product[].class)
                     .block();
-            return rLpr;
+            return rLprC;
         }catch (WebClientResponseException e){
             if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -46,6 +46,44 @@ public class ProductService implements IProductService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    @Override
+    public ResponseEntity<Product[]> listPrSearchBar(String param){
+        try{
+            ResponseEntity<Product[]> rLprS = wCpr.get().uri(uriBuilder -> uriBuilder
+                        .path("/search")
+                        .queryParam("param",param)
+                        .build())
+                    .retrieve()
+                    .toEntity(Product[].class)
+                    .block();
+            return rLprS;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<Product[]> listPrCategory(String param){
+        try{
+            ResponseEntity<Product[]> rLprS = wCpr.get().uri(uriBuilder -> uriBuilder
+                            .path("/category")
+                            .queryParam("param",param)
+                            .build())
+                    .retrieve()
+                    .toEntity(Product[].class)
+                    .block();
+            return rLprS;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
 
     @Override
     public ResponseEntity<Product> readPr(Long idP) {

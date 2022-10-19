@@ -17,6 +17,11 @@ public class PurchaseController {
         return ip.listAllPu();
     }
 
+    @GetMapping("user/{idU}")
+    public ResponseEntity<Purchase[]> listAllByUs(@PathVariable("idU") Long idU){
+        return ip.listPubyUS(idU);
+    }
+
     @GetMapping("/{idP}")
     public ResponseEntity<Purchase> get(@PathVariable("idP") Long idP){
         return ip.readPu(idP);
@@ -26,7 +31,9 @@ public class PurchaseController {
     public ResponseEntity<Purchase> create(@PathVariable("idP") Long idP,@PathVariable("idU") Long idU,@RequestBody Purchase purchase){
         return ip.savePu(idP,idU,purchase);
     }
-//    @PutMapping()
+
+
+    //    @PutMapping()
 //    public ResponseEntity<Integer> update(@RequestBody Purchase purchase){
 //        return ip.updatePu(purchase);
 //    }
