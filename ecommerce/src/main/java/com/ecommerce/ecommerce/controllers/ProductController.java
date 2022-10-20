@@ -33,7 +33,15 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    //Listar productos segun la categoria
+    @GetMapping("/pagination")
+    public ResponseEntity<List<Product>> getProductsPaginated(@RequestParam int offset, @RequestParam int pageSize){
+        List<Product> products = productService.getProductsWithPagination(offset,pageSize);
+
+        if(products != null){
+            return ResponseEntity.ok().body(products);
+        }
+        return ResponseEntity.noContent().build();
+    }
     
     @GetMapping("/carrouselProducts")
     public ResponseEntity<List<Product>> listProductsForCarroussel(){

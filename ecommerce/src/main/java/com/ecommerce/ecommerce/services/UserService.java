@@ -60,14 +60,6 @@ public class UserService {
             userToUpdate.setSurname(user.getSurname());
             userToUpdate.setMail(user.getMail());
 
-//            User User = mapEntityToUser(userToUpdate);
-//
-//            User.setName(user.getName());
-//            User.setSurname(user.getSurname());
-//            User.setMail(user.getMail());
-
-//            userRepository.save(mapUserToEntity(User));
-
             userRepository.save(userToUpdate);
 
             return user;
