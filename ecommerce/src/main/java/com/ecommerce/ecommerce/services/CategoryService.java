@@ -53,13 +53,6 @@ public class CategoryService {
         if(categoryRepository.findByName(name) != null){
             Optional<CategoryJPA> categoryToUpdate = categoryRepository.findByName(name);
 
-//            Category categoryModel = mapEntityToCategory(categoryToUpdate.get());
-//
-//            categoryModel.setName(category.getName());
-//            categoryModel.setSizes(category.getSizes());
-
-            
-
             categoryToUpdate.get().setName(category.getName());
             categoryToUpdate.get().setSizes(category.getSizes());
             categoryToUpdate.get().setProducts(categoryToUpdate.get().getProducts());
