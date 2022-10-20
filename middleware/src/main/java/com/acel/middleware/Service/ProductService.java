@@ -84,6 +84,26 @@ public class ProductService implements IProductService {
         }
     }
 
+    @Override
+    public ResponseEntity<Product[]> listPrPaginated(int offset,int pageSize){
+        try{
+            ResponseEntity<Product[]> rLprP = wCpr.get().uri(uriBuilder -> uriBuilder
+                            .path("/pagination")
+                            .queryParam("offset",offset)
+                            .queryParam("pageSize",pageSize)
+                            .build())
+                    .retrieve()
+                    .toEntity(Product[].class)
+                    .block();
+            return rLprP;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
 
     @Override
     public ResponseEntity<Product> readPr(Long idP) {

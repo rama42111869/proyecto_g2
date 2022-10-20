@@ -8,6 +8,7 @@ public interface IProductService {
     ResponseEntity<Product[]> listPrCarrousel();
     ResponseEntity<Product[]> listPrSearchBar(String param);
     ResponseEntity<Product[]> listPrCategory(String param);
+    ResponseEntity<Product[]> listPrPaginated(int offset,int pageSize);
     ResponseEntity<Product> readPr(Long idP);
     ResponseEntity<Product> savePr(Long idC,Product product);
     ResponseEntity<Product> updatePr(Long idP,Long idC,Product product);

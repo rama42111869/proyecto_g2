@@ -35,6 +35,11 @@ public class    ProductController {
         return ip.listPrCategory(param);
     }
 
+    @GetMapping("/pagination")
+    public ResponseEntity<Product[]> listProductsPaginated(@RequestParam int offset, @RequestParam int pageSize){
+        return ip.listPrPaginated(offset,pageSize);
+    }
+
 
     @GetMapping("/{idP}")
     public ResponseEntity<Product> get(@PathVariable("idP") Long idP){
