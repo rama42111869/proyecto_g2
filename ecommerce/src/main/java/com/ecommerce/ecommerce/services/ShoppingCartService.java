@@ -1,15 +1,18 @@
 package com.ecommerce.ecommerce.services;
 
+import com.ecommerce.ecommerce.DBModel.ProductJPA;
 import com.ecommerce.ecommerce.DBModel.ShoppingCartJPA;
-import com.ecommerce.ecommerce.model.Category;
-import com.ecommerce.ecommerce.model.Product;
-import com.ecommerce.ecommerce.model.Purchase;
+import com.ecommerce.ecommerce.DBModel.UserJPA;
+import com.ecommerce.ecommerce.model.*;
+import com.ecommerce.ecommerce.repositories.IProductRepository;
 import com.ecommerce.ecommerce.repositories.IShoppingCartRepository;
+import com.ecommerce.ecommerce.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShoppingCartService {
@@ -29,24 +32,57 @@ public class ShoppingCartService {
     @Autowired
     private PurchaseService purchaseService;
 
-    public List<Product> getAllItemsFromSpecificUser(Long userId){
-        List<ShoppingCartJPA> shoppingCartJPAS = shoppingCartRepository.findAllCartsByUser(userId);
-        List<Product> products = new ArrayList<>();
+    @Autowired
+    private IUserRepository userRepository;
 
-        shoppingCartJPAS.forEach(sc -> {
-            Product product = new Product();
-            product.setId(sc.getProduct().getId());
-            product.setName(sc.getProduct().getName());
-            product.setBrand(sc.getProduct().getBrand());
-            product.setPrice(sc.getProduct().getPrice());
+    @Autowired
+    private IProductRepository productRepository;
 
+    public List<CartProductDTO> getAllItemsFromSpecificUser(Long userId){
+        List<ShoppingCartJPA> shoppingCartJPA = shoppingCartRepository.findAll();
+        List<ShoppingCartJPA> shoppingCartJPAId = new ArrayList<>();
+        List<CartProductDTO> cartProductsDTO = new ArrayList<>();
 
-            products.add(product);
+        shoppingCartJPA.forEach(s -> {
+            Long user = s.getUser().getId();
+            if(user == userId){
+                shoppingCartJPAId.add(s);
+            }
         });
 
-        if(products.isEmpty()){
-            return null;
+        shoppingCartJPAId.forEach(s -> {
+            CartProductDTO cartProd = new CartProductDTO();
+            cartProd.setProductName(s.getProduct().getName());
+            cartProd.setProductDescription(s.getProduct().getDescription());
+            cartProd.setProductImages(s.getProduct().getImages());
+            cartProd.setProductPrice(s.getProduct().getPrice());
+            cartProductsDTO.add(cartProd);
+        });
+
+        return cartProductsDTO;
+    }
+
+    public Integer addProductShoppingCart(Long userId, Long productId){
+        UserJPA user = userRepository.findById(userId).get();
+        ProductJPA product = productRepository.findById(productId).get();
+
+        if(user != null && product != null){
+            ShoppingCartJPA sCart = new ShoppingCartJPA();
+            sCart.setUser(user);
+            sCart.setProduct(product);
+            shoppingCartRepository.save(sCart);
+            return 1;
         }
-        return products;
+        return 0;
+    }
+
+    public Integer deleteProductFromShoppingCart(Long id){
+        Optional<ShoppingCartJPA> sCart = shoppingCartRepository.findById(id);
+
+        if(sCart.isPresent()){
+            shoppingCartRepository.deleteById(id);
+            return 1;
+        }
+        return 0;
     }
 }

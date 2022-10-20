@@ -11,9 +11,6 @@ import java.util.List;
 @Repository
 public interface IShoppingCartRepository extends JpaRepository<ShoppingCartJPA, Long> {
 
-//    List<ShoppingCartJPA> findAllByUserId(Long id);
-
-    @Query(nativeQuery = true, value = "SELECT product FROM shopping_carts WHERE user_id=:userId")
-    List<ShoppingCartJPA> findAllCartsByUser(@Param("userId") Long userId);
+    List<ShoppingCartJPA> findByUserId(Long userId);
 
 }
