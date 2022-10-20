@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-8 login-form-1">
+            <h3>Iniciar Sesion</h3>
+            <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="btn btn"(click)="onSubmit()" value="Enviar" />
+                </div>
+                <div class="form-group">
+                   <!---<a href="#" class="ForgetPwd">Forget Password?</a>--->
+                </div>
+            </form>
+           <button class="btn"(click)="onClick()">Iniciar Sesion con Google</button>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>
