@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Interface/IProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/ProductService.java" afterDir="false" />
-    </list>
+    <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
