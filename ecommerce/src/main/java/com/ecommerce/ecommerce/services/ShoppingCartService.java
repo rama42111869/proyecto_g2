@@ -21,18 +21,6 @@ public class ShoppingCartService {
     private IShoppingCartRepository shoppingCartRepository;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private PurchaseService purchaseService;
-
-    @Autowired
     private IUserRepository userRepository;
 
     @Autowired

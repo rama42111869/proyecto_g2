@@ -1,11 +1,9 @@
 package com.ecommerce.ecommerce.DBModel;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "shopping_carts")

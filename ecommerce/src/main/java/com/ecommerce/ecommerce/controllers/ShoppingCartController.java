@@ -1,8 +1,6 @@
 package com.ecommerce.ecommerce.controllers;
 
-import com.ecommerce.ecommerce.DBModel.ShoppingCartJPA;
 import com.ecommerce.ecommerce.model.CartProductDTO;
-import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.services.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
