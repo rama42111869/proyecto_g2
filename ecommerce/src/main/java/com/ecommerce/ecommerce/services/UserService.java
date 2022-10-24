@@ -89,7 +89,6 @@ public class UserService {
     }
 
     public UserJPA mapUserToEntity(User user) {
-        //UserJPA mapedJPA = modelMapper.map(User.class, UserJPA.class);
         UserJPA mapedJPA = new UserJPA(user.getMail(), user.getName(), user.getSurname());
         return mapedJPA;
     }
