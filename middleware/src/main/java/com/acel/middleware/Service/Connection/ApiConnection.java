@@ -33,6 +33,12 @@ public class ApiConnection {
                 case 'c':
                     connection = this.createConection("http://localhost:8080/api/category");
                     break;
+                case 's':
+                    connection = this.createConection("http://localhost:8080/api/shoppingCarts");
+                    break;
+                case 'k':
+                    connection = this.createConection("http://localhost:8080/api/creditCards");
+                    break;
             }
         }catch (Exception e){
             System.out.println(e.getMessage());

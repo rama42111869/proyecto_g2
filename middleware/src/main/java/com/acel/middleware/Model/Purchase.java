@@ -10,7 +10,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Purchase {
-
     private Long id;
 
     @JsonIgnore

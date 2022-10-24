@@ -9,12 +9,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-
     private Long id;
     private String name;
     private String surname;
     private String mail;
 
     private List<Purchase> purchases;
-
 }

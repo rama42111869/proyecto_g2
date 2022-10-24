@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e53edfc-34e7-4a45-bb8e-faf4710f8f1d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ecommerce/src/main/java/com/ecommerce/ecommerce/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce/src/main/java/com/ecommerce/ecommerce/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/Purchase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Connection/ApiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/acel/middleware/Service/Connection/ApiConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +61,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.acel.middleware.Model" />
       <recent name="com.acel.middleware.Config" />
       <recent name="com.acel.middleware.config" />
     </key>
