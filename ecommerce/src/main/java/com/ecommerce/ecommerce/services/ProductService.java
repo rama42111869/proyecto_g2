@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.ecommerce.DBModel.CategoryJPA;
@@ -13,7 +15,6 @@ import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.repositories.ICategoryRepository;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
 import java.util.ArrayList;
-import java.util.Random;
 
 @Service
 public class ProductService {
@@ -40,6 +41,21 @@ public class ProductService {
 
     public List<Product> getProductsByCategory(String category){
         List<ProductJPA> productsJPA = productRepository.findByCategoryName(category);
+        List<Product> productsDTO = new ArrayList<>();
+
+        productsJPA.forEach(p -> {
+            Product prodDTO = mapEntityToProduct(p);
+            productsDTO.add(prodDTO);
+        });
+
+        if(!productsDTO.isEmpty()){
+            return productsDTO;
+        }
+        return null;
+    }
+
+    public List<Product> getProductsWithPagination(int offset, int pageSize){
+        Page<ProductJPA> productsJPA = productRepository.findAll(PageRequest.of(offset,pageSize));
         List<Product> productsDTO = new ArrayList<>();
 
         productsJPA.forEach(p -> {
@@ -133,7 +149,6 @@ public class ProductService {
     }
     
     public List<Product> getProductsForCarrousel(){
-        Random rand = new Random();
         
         List<Product> allProducts = getAllProducts();
         
