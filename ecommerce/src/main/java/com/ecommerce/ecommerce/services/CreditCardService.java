@@ -9,7 +9,6 @@ import com.ecommerce.ecommerce.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service
@@ -34,11 +33,10 @@ public class CreditCardService {
         creditCardJPA.setSecurityCode(creditCard.getSecurityCode());
         creditCardJPA.setExpirationDate(creditCard.getExpirationDate());
 
-        if(creditCardJPA != null){
-            creditCardRepository.save(creditCardJPA);
-            return 1;
-        }
-        return 0;
+        
+        creditCardRepository.save(creditCardJPA);
+        return 1;
+        
     }
 
     public CreditCard getCreditCardByUser(Long userId){
@@ -53,10 +51,9 @@ public class CreditCardService {
         creditCard.setCreditCardNumber(creditCardJPA.getCreditCardNumber());
         creditCard.setUser(user);
 
-        if(creditCard != null){
+        
             return creditCard;
-        }
-        return null;
+
     }
 
     public Integer deleteOneCreditCard(Long id){

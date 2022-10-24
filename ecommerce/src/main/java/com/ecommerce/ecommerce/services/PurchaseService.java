@@ -24,12 +24,6 @@ public class PurchaseService {
     @Autowired
     private IPurchaseRepository purchaseRepository;
     
-    @Autowired
-    private ProductService productService;
-    
-    @Autowired
-    private UserService userService;
-    
     @Autowired 
     private IProductRepository productRepository;
     

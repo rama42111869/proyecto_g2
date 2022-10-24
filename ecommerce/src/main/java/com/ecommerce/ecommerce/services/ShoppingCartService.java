@@ -21,48 +21,32 @@ public class ShoppingCartService {
     private IShoppingCartRepository shoppingCartRepository;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private PurchaseService purchaseService;
-
-    @Autowired
     private IUserRepository userRepository;
 
     @Autowired
     private IProductRepository productRepository;
 
     public List<CartProductDTO> getAllItemsFromSpecificUser(Long userId){
-        List<ShoppingCartJPA> shoppingCartJPA = shoppingCartRepository.findAll();
-        List<ShoppingCartJPA> shoppingCartJPAId = new ArrayList<>();
         List<CartProductDTO> cartProductsDTO = new ArrayList<>();
 
-        shoppingCartJPA.forEach(s -> {
-            Long user = s.getUser().getId();
-            if(user == userId){
-                shoppingCartJPAId.add(s);
-            }
-        });
+        List<ShoppingCartJPA> sCartsFromUser = shoppingCartRepository.findByUserId(userId);
 
-        shoppingCartJPAId.forEach(s -> {
+        sCartsFromUser.forEach(s -> {
             CartProductDTO cartProd = new CartProductDTO();
+            cartProd.setProductId(s.getProduct().getId());
             cartProd.setProductName(s.getProduct().getName());
             cartProd.setProductDescription(s.getProduct().getDescription());
             cartProd.setProductImages(s.getProduct().getImages());
             cartProd.setProductPrice(s.getProduct().getPrice());
             cartProductsDTO.add(cartProd);
         });
-
-        return cartProductsDTO;
+        if(cartProductsDTO.size() > 0){
+            return cartProductsDTO;
+        }
+        return null;
     }
 
-    public Integer addProductShoppingCart(Long userId, Long productId){
+    public ShoppingCartJPA addProductShoppingCart(Long userId, Long productId){
         UserJPA user = userRepository.findById(userId).get();
         ProductJPA product = productRepository.findById(productId).get();
 
@@ -71,18 +55,18 @@ public class ShoppingCartService {
             sCart.setUser(user);
             sCart.setProduct(product);
             shoppingCartRepository.save(sCart);
-            return 1;
+            return sCart;
         }
-        return 0;
+        return null;
     }
 
-    public Integer deleteProductFromShoppingCart(Long id){
+    public ShoppingCartJPA deleteProductFromShoppingCart(Long id){
         Optional<ShoppingCartJPA> sCart = shoppingCartRepository.findById(id);
 
         if(sCart.isPresent()){
             shoppingCartRepository.deleteById(id);
-            return 1;
+            return sCart.get();
         }
-        return 0;
+        return null;
     }
 }

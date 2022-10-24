@@ -15,7 +15,6 @@ import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.repositories.ICategoryRepository;
 import com.ecommerce.ecommerce.repositories.IProductRepository;
 import java.util.ArrayList;
-import java.util.Random;
 
 @Service
 public class ProductService {
@@ -150,7 +149,6 @@ public class ProductService {
     }
     
     public List<Product> getProductsForCarrousel(){
-        Random rand = new Random();
         
         List<Product> allProducts = getAllProducts();
         
