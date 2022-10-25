@@ -1,0 +1,11 @@
+.div2 {
+    margin: 140px;
+    overflow: hidden;
+    position: relative;
+    /*border-radius: 20px;*/
+    box-shadow: 5px 8px 12px black;
+}
+
+.div3{
+    margin: 140px;
+}
