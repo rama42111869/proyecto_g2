@@ -17,13 +17,10 @@ public class Purchase {
 
     @JsonIgnore
     private User user;
-
     private int amount;
-
     private Date date;
 
     public Purchase(int amount){
         this.amount = amount;
     }
-
 }

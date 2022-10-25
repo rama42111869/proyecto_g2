@@ -17,7 +17,7 @@ public class PurchaseService implements IPurchaseService {
     @Override
     public ResponseEntity<Purchase[]> listAllPu() {
         try{
-            ResponseEntity<Purchase[]> rLpu =wCpu.get()
+            ResponseEntity<Purchase[]> rLpu = wCpu.get()
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
                     .toEntity(Purchase[].class)
@@ -73,7 +73,7 @@ public class PurchaseService implements IPurchaseService {
             ResponseEntity<Purchase> rSpu = wCpu.post()
                     .uri("/"+idP+"/"+idU)
                     //.header("Authorization",SecurityConnection.getToken())
-                    .body(Mono.just(purchase), Purchase.class)
+                    .body(Mono.just(purchase),Purchase.class)
                     .retrieve()
                     .toEntity(Purchase.class)
                     .block();
