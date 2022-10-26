@@ -38,7 +38,6 @@ public class PurchaseController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    //Listar compras segun un usuario
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Purchase>> listOnePurchaseByUser(@PathVariable Long userId){

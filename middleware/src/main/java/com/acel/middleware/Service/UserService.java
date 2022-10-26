@@ -1,6 +1,5 @@
 package com.acel.middleware.Service;
 
-import com.acel.middleware.Model.Purchase;
 import com.acel.middleware.Model.User;
 import com.acel.middleware.Service.Connection.ApiConnection;
 import com.acel.middleware.Service.Interface.IUserService;
