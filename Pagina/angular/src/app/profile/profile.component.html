@@ -4,14 +4,14 @@
   <div class="row">
     <div class="col-4">
       <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active list-group-item-dark" id="list-home-list" data-bs-toggle="list"
-          href="#list-home" role="tab" aria-controls="list-home">Perfil</a>
-        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-profile-list" data-bs-toggle="list"
-          href="#list-profile" role="tab" aria-controls="list-profile">Mi Lista de deseos</a>
-        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-messages-list" data-bs-toggle="list"
-          href="#list-messages" role="tab" aria-controls="list-messages">Carrito</a>
-        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-settings-list" data-bs-toggle="list"
-          href="#list-settings" role="tab" aria-controls="list-settings">Compras</a>
+        <a class="list-group-item list-group-item-action active list-group-item-dark" id="list-home-list"
+          data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Perfil</a>
+        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-profile-list"
+          data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Mi Lista de deseos</a>
+        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-messages-list"
+          data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Carrito</a>
+        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-settings-list"
+          data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Historial de Compras</a>
       </div>
     </div>
     <div class="col-8">
@@ -19,20 +19,40 @@
         <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
           Perfil
           foto
-                      Username
-                      apellido
-                      mail
-                      boton edit
-                      tarjeta:
-                      numero censurado
-                      tip de tarjeta
+          Username
+          apellido
+          mail
+          boton edit
+          tarjeta:
+          numero censurado
+          tip de tarjeta
         </div>
+        <!--Lista de deseos-->
         <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-          Mi Lista de deseos
-          - foto pequeña, detalle producto
-                      - foto pequeña, detalle producto
-                      - foto pequeña, detalle producto
-                      - foto pequeña, detalle producto
+          <div class="row historial contentImg">
+            <div class="col ">
+              <a href="https://ibb.co/QCnyddB"><img class="img-fluid" src="https://i.ibb.co/txcVXXf/buzito.webp"
+                  alt="buzito" border="0"></a>
+            </div>
+            <div class="col">
+              <p>Campera tipo bomber</p>
+            </div>
+            <div class="col">
+              <p></p>
+            </div>
+            <div class="col pint">
+                <div class="icon"><a href="#" class="text-decoration-none text-dark"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                    </svg></a></div>
+                <p class="price">$345</p>
+
+                <button type="btn" class="btn btn-dark">Agregar al carrito</button>
+ 
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
           Carrito
@@ -41,20 +61,42 @@
           - foto pequeña, detalle producto
           - boton comprar
         </div>
+        <!--Historial de compras-->
         <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-          Compras
-          Listado de COMPRAS
-                      -
-                      -
-                      -
-                      -
+          <div class="row">
+            <div class="col">
+              <p>Producto</p>
+            </div>
+            <div class="col">
+              <p>Fecha</p>
+            </div>
+            <div class="col">
+              <p>Cantidad</p>
+            </div>
+            <div class="col">
+              <p>Monto</p>
+            </div>
+          </div>
+          <!--Contenedor del producto comprado-->
+          <div class="row historial">
+            <div class="col">
+              <p>Blusa con espampado</p>
+            </div>
+            <div class="col">
+              <p>03-03-03</p>
+            </div>
+            <div class="col">
+              <p>3</p>
+            </div>
+            <div class="col">
+              <p>$132</p>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
 </div>
 
 

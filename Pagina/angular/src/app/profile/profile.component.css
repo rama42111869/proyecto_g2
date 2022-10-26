@@ -1,4 +1,24 @@
 .container{
     margin-top: 50px;
 }
+.historial{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    margin-bottom: 10px;
+}
+.historial p{
+    margin-block: 20px;
+}
+img{
+    margin-block: 5px;
+}
+.pint button{
+    margin-top: 80px;
+    cursor: pointer;
+}
+.icon{
+    margin-left: 150px;
+}
+.price{
+    margin-top: 170px;
+}
 
