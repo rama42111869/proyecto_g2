@@ -172,7 +172,7 @@ public class ProductService {
             Product prodToAdd =  allProducts.get(randomIdInt);
             
             productsForCarroussel.add(prodToAdd);
-            // System.out.println(rightRange);
+
             System.out.println(prodToAdd.getId());
             idsList.remove(randomIdInt);
             allProducts.remove(randomIdInt);
