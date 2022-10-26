@@ -8,59 +8,80 @@
           data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Perfil</a>
         <a class="list-group-item list-group-item-action list-group-item-dark" id="list-profile-list"
           data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Mi Lista de deseos</a>
-        <a class="list-group-item list-group-item-action list-group-item-dark" id="list-messages-list"
-          data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Carrito</a>
+        <!--<a class="list-group-item list-group-item-action list-group-item-dark" id="list-messages-list"
+          data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Carrito</a>-->
         <a class="list-group-item list-group-item-action list-group-item-dark" id="list-settings-list"
           data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Historial de Compras</a>
       </div>
     </div>
+
+    <!--Perfil-->
+
     <div class="col-8">
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-          Perfil
-          foto
-          Username
-          apellido
-          mail
-          boton edit
-          tarjeta:
-          numero censurado
-          tip de tarjeta
+
+          <div class="history col">
+            <div class="row">
+              <div class="col-10">
+             <ul class="list-group list-group-flush">
+              <li href="#" class="list-group-item">Nombre</li>
+              <li href="#" class="list-group-item">Apellido</li>
+              <li href="#" class="list-group-item">E-Mail</li>
+            </ul>
+              </div>
+              <div class="col">
+                 <a href="#" type="btn" class="col pint" aling="left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                  class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                  <path fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                </svg>
+              </a>
+            
+            </div>
+            </div>
+          </div>
         </div>
         <!--Lista de deseos-->
         <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-          <div class="row historial contentImg">
+          <div class="row history contentImg">
             <div class="col ">
               <a href="https://ibb.co/QCnyddB"><img class="img-fluid" src="https://i.ibb.co/txcVXXf/buzito.webp"
                   alt="buzito" border="0"></a>
             </div>
-            <div class="col">
+            <div href="#" class="col">
               <p>Campera tipo bomber</p>
             </div>
             <div class="col">
               <p></p>
             </div>
             <div class="col pint">
-                <div class="icon"><a href="#" class="text-decoration-none text-dark"><svg
-                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                    </svg></a></div>
-                <p class="price">$345</p>
+              <div href="#" class="icon"><a href="#" class="text-decoration-none text-dark"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                  </svg></a></div>
+              <p class="price">$345</p>
 
-                <button type="btn" class="btn btn-dark">Agregar al carrito</button>
- 
+              <button href="#" type="btn" class="btn btn-dark">Agregar al carrito</button>
+
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+
+        <!--<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
           Carrito
           - foto pequeña, detalle producto
           - foto pequeña, detalle producto
           - foto pequeña, detalle producto
           - boton comprar
-        </div>
+        </div>-->
+
+
         <!--Historial de compras-->
         <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
           <div class="row">
@@ -78,17 +99,17 @@
             </div>
           </div>
           <!--Contenedor del producto comprado-->
-          <div class="row historial">
-            <div class="col">
+          <div class="row history">
+            <div href="#" class="col">
               <p>Blusa con espampado</p>
             </div>
-            <div class="col">
+            <div href="#" class="col">
               <p>03-03-03</p>
             </div>
-            <div class="col">
+            <div href="#" class="col">
               <p>3</p>
             </div>
-            <div class="col">
+            <div href="#" class="col">
               <p>$132</p>
 
             </div>
