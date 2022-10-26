@@ -160,16 +160,22 @@ public class ProductService {
         
         List<Product> productsForCarroussel = new ArrayList<>();
         
-        Long leftRange = 1L;
-        Long rightRange = Long.valueOf(idsList.size());
+
         
         for(int i = 0; i<16; i++){
+            Long leftRange = 1L;
+            Long rightRange = Long.valueOf(idsList.size());
+
             Long randomLongId = leftRange + (long)(Math.random() * (rightRange - leftRange));
             int randomIdInt = randomLongId.intValue();
             
             Product prodToAdd =  allProducts.get(randomIdInt);
             
             productsForCarroussel.add(prodToAdd);
+            // System.out.println(rightRange);
+            System.out.println(prodToAdd.getId());
+            idsList.remove(randomIdInt);
+            allProducts.remove(randomIdInt);
         }
         
         return productsForCarroussel;

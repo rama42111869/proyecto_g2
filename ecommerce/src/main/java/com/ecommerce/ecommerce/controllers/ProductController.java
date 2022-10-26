@@ -96,7 +96,7 @@ public class ProductController {
             productService.deleteOneProduct(id);
             return ResponseEntity.status(HttpStatus.OK).body(product);
         }
-        return null;
+        return ResponseEntity.notFound().build();
     }
 
 
