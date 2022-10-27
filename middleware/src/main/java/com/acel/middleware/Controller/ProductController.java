@@ -22,14 +22,14 @@ public class  ProductController {
         return ip.listPrCarrousel();
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<Product[]> listProductsInSearchBar(@RequestParam String param){
-        return ip.listPrSearchBar(param);
+    @GetMapping("/search/{sValue}")
+    public ResponseEntity<Product[]> listProductsInSearchBar(@PathVariable("sValue") String sValue){
+        return ip.listPrSearchBar(sValue);
     }
 
-    @GetMapping("/category")
-    public ResponseEntity<Product[]> listProductsCategory(@RequestParam String param){
-        return ip.listPrCategory(param);
+    @GetMapping("/category/{catN}")
+    public ResponseEntity<Product[]> listProductsCategory(@PathVariable("catN") String catN){
+        return ip.listPrCategory(catN);
     }
 
     @GetMapping("/pagination")

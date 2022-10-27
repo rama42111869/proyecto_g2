@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 public interface IProductService {
     ResponseEntity<Product[]> listAllPr();
     ResponseEntity<Product[]> listPrCarrousel();
-    ResponseEntity<Product[]> listPrSearchBar(String param);
-    ResponseEntity<Product[]> listPrCategory(String param);
+    ResponseEntity<Product[]> listPrSearchBar(String sValue);
+    ResponseEntity<Product[]> listPrCategory(String catN);
     ResponseEntity<Product[]> listPrPaginated(int offset,int pageSize);
     ResponseEntity<Product> readPr(Long idP);
     ResponseEntity<Product> savePr(Long idC,Product product);

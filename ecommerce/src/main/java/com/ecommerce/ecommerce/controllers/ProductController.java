@@ -50,18 +50,18 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productsForCarroussel);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Product>> listProductsInSearchBar(@RequestParam String param){
-        List<Product> productsFromSearch = productService.getPorductsBySearchBar(param,param,param,param);
+    @GetMapping("/search/{sValue}")
+    public ResponseEntity<List<Product>> listProductsInSearchBar(@PathVariable("sValue") String sValue){
+        List<Product> productsFromSearch = productService.getPorductsBySearchBar(sValue,sValue,sValue,sValue);
         if(productsFromSearch != null){
             return ResponseEntity.ok().body(productsFromSearch);
         }
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/category/{cName}")
-    public ResponseEntity<List<Product>> listProductsByCategory(@PathVariable("cName") String cName){
-        List<Product> productsByCategory = productService.getProductsByCategory(cName);
+    @GetMapping("/category/{catN}")
+    public ResponseEntity<List<Product>> listProductsByCategory(@PathVariable("catN") String catN){
+        List<Product> productsByCategory = productService.getProductsByCategory(catN);
 
         if(productsByCategory != null){
             return ResponseEntity.ok().body(productsByCategory);

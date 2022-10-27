@@ -47,16 +47,23 @@ public class ProductService implements IProductService {
         }
     }
     @Override
-    public ResponseEntity<Product[]> listPrSearchBar(String param){
+    public ResponseEntity<Product[]> listPrSearchBar(String sValue){
         try{
-            ResponseEntity<Product[]> rLprS = wCpr.get().uri(uriBuilder -> uriBuilder
-                        .path("/search")
-                        .queryParam("param",param)
-                        .build())
-                    .retrieve()
-                    .toEntity(Product[].class)
-                    .block();
+            ResponseEntity<Product[]> rLprS = wCpr.get()
+                                                .uri("/search/"+sValue)
+                                                //.header("Authorization",SecurityConnection.getToken())
+                                                .retrieve()
+                                                .toEntity(Product[].class)
+                                                .block();
             return rLprS;
+//            ResponseEntity<Product[]> rLprS = wCpr.get().uri(uriBuilder -> uriBuilder
+//                        .path("/search")
+//                        .queryParam("param",param)
+//                        .build())
+//                    .retrieve()
+//                    .toEntity(Product[].class)
+//                    .block();
+//            return rLprS;
         }catch (WebClientResponseException e){
             if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -66,16 +73,23 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<Product[]> listPrCategory(String param){
+    public ResponseEntity<Product[]> listPrCategory(String catN){
         try{
-            ResponseEntity<Product[]> rLprS = wCpr.get().uri(uriBuilder -> uriBuilder
-                            .path("/category")
-                            .queryParam("param",param)
-                            .build())
-                    .retrieve()
-                    .toEntity(Product[].class)
-                    .block();
-            return rLprS;
+            ResponseEntity<Product[]> rLprC = wCpr.get()
+                                            .uri("/category/"+catN)
+                                            //.header("Authorization",SecurityConnection.getToken())
+                                            .retrieve()
+                                            .toEntity(Product[].class)
+                                            .block();
+            return rLprC;
+//            ResponseEntity<Product[]> rLprS = wCpr.get().uri(uriBuilder -> uriBuilder
+//                            .path("/category")
+//                            .queryParam("param",param)
+//                            .build())
+//                    .retrieve()
+//                    .toEntity(Product[].class)
+//                    .block();
+//            return rLprS;
         }catch (WebClientResponseException e){
             if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
