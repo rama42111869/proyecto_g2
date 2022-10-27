@@ -59,9 +59,9 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/category")
-    public ResponseEntity<List<Product>> listProductsByCategory(@RequestParam String param){
-        List<Product> productsByCategory = productService.getProductsByCategory(param);
+    @GetMapping("/category/{cName}")
+    public ResponseEntity<List<Product>> listProductsByCategory(@PathVariable("cName") String cName){
+        List<Product> productsByCategory = productService.getProductsByCategory(cName);
 
         if(productsByCategory != null){
             return ResponseEntity.ok().body(productsByCategory);

@@ -1,6 +1,5 @@
 package com.acel.middleware.Service;
 import com.acel.middleware.Model.CartProduct;
-import com.acel.middleware.Model.Purchase;
 import com.acel.middleware.Service.Connection.ApiConnection;
 import com.acel.middleware.Service.Interface.IShoppingCartService;
 import org.springframework.http.HttpStatus;
@@ -9,19 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-import java.util.List;
-
 @Service
 public class ShoppingCartService implements IShoppingCartService {
-    private WebClient wCpu = new ApiConnection('s').getClient();
+    private WebClient wCsc = new ApiConnection('s').getClient();
 
     @Override
-    public ResponseEntity<List<CartProduct>> listAllPrFromUs(Long userId) {
+    public ResponseEntity<CartProduct[]> listAllPrFromUs(Long userId) {
         try{
-            ResponseEntity<Purchase[]> rLpu =wCpu.get()
+            ResponseEntity<CartProduct[]> rLpu = wCsc.get()
+                    .uri("/"+userId)
                     //.header("Authorization",SecurityConnection.getToken())
                     .retrieve()
-                    .toEntity(Purchase[].class)
+                    .toEntity(CartProduct[].class)
                     .block();
             return rLpu;
         }catch (WebClientResponseException e){
@@ -34,11 +32,47 @@ public class ShoppingCartService implements IShoppingCartService {
 
     @Override
     public ResponseEntity<Integer> savePrToSc(Long userId, Long productId) {
-        return null;
+        try {
+            ResponseEntity<Integer> rSsc = wCsc.post()
+                    .uri("/user/"+userId+"/product/"+productId)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .retrieve()
+                    .toEntity(Integer.class)
+                    .block();
+            return rSsc;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
+                return ResponseEntity.internalServerError().build();
+            }
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity
+                    .status(e.getStatusCode()).build();
+            //                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+        }
     }
 
     @Override
     public ResponseEntity<Integer> deletePrFromSc(Long id) {
-        return null;
+        try {
+            ResponseEntity<Integer> rDpsc = wCsc.delete()
+                    .uri("/"+ id)
+                    //.header("Authorization",SecurityConnection.getToken())
+                    .retrieve()
+                    .toEntity(Integer.class)
+                    .block();
+            return rDpsc;
+        }catch (WebClientResponseException e){
+            if(e.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR){
+                return ResponseEntity.internalServerError().build();
+            }
+            if(e.getStatusCode() == HttpStatus.UNAUTHORIZED){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            return ResponseEntity
+                    .status(e.getStatusCode())
+                    .body((Integer.valueOf(e.getResponseBodyAsString())));
+        }
     }
 }

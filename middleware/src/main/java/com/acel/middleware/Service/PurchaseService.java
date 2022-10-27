@@ -136,6 +136,4 @@ public class PurchaseService implements IPurchaseService {
 //                    .body((Integer.valueOf(e.getResponseBodyAsString())));
 //        }
 //    }
-
-
 }

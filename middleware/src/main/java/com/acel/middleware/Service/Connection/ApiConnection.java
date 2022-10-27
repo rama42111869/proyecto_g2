@@ -39,6 +39,9 @@ public class ApiConnection {
                 case 'k':
                     connection = this.createConection("http://localhost:8080/api/creditCards");
                     break;
+                case 'w':
+                    connection = this.createConection("http://localhost:8080/api/wishLists");
+                    break;
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
