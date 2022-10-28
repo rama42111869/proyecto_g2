@@ -481,10 +481,10 @@
                                 </div>
 
                                 <!-- PARA PROBAR SI MANTIENE SESIONES VIEJAS
-            <div class="mb-3 form-check">
+             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>-->
+             </div>-->
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                               </form>
@@ -524,15 +524,17 @@
                     </ul>
                   </li>-->
                     <!-- </div>
-           </section> 
-           </div>-->
+                      </section> 
+                      </div>-->
                     <!--<div class="nav-item">
-            <section class="Wonka">-->
+                      <section class="Wonka">-->
 
                     <!--CARRITO-->
                     <!-- <div class="container demo">-->
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" data-toggle="modal" data-target="#myModal2">
+                    
+                    <button class="nav-link active" style="border:none; border: none; padding: 0; background: none;" data-bs-toggle="modal" data-bs-target="#myModal">
+                      <a class="nav-link active" aria-current="page" href="#" data-toggle="modal" data-target="#myModal">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-cart2" viewBox="0 0 20 20">
                         <path
@@ -549,20 +551,20 @@
                       </svg>-->
 
                     </a>
+                    </button>
                   </li>
-                  <!-- Modal -->
-                  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog"
-                    aria-labelledby="myModalLabel2">
-                    <div class="modal-dialog" role="document">
+                  <!-- The Modal -->
+                  <div class="modal" id="myModal">
+                    <div class="modal-dialog">
                       <div class="modal-content">
 
+                        <!-- Modal Header -->
                         <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                              aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel2">Carrito de Compras</h4>
+                          <h4 class="modal-title">Carrito de Compras</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
 
-
+                        <!-- Modal body -->
                         <div class="modal-body">
                           <table class="table">
                             <thead>
@@ -595,21 +597,25 @@
                           </table>
                           <h1>Total:</h1>
                         </div>
+
                         <!-- Modal footer -->
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Iniciar
                             Compra</button>
                         </div>
 
-                      </div><!-- modal-content -->
-                    </div><!-- modal-dialog -->
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-                      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-                      crossorigin="anonymous"></script>
-                  </div><!-- modal -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
                   <!-- </div>-->
                   <!--</section>
-             </div>-->
+                 </div>-->
                 </ul>
               </div>
             </ul>
@@ -619,3 +625,72 @@
     </div>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+<!-- Modal 
+<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog"
+aria-labelledby="myModalLabel2">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel2">Carrito de Compras</h4>
+    </div>
+
+
+    <div class="modal-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td>$4999</td>
+
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td>$200</td>
+
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td>$100</td>
+          </tr>
+        </tbody>
+      </table>
+      <h1>Total:</h1>
+    </div>-->
+<!-- Modal footer 
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Iniciar
+        Compra</button>
+    </div>
+
+  </div>-->
+<!-- modal-content -->
+<!--</div> modal-dialog -->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+  crossorigin="anonymous"></script>
+</div>-->
+<!-- modal -->
