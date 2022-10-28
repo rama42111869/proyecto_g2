@@ -1,0 +1,32 @@
+<app-menumain></app-menumain>
+<div class="table-responsive">
+  <table class="table-responsive">
+    <tr>
+      <td class="table">
+        <div class="row">
+          <div class="search__name">
+            <form #formularioMascota="ngForm" (ngSubmit)="onSearch()">
+              <input type="text" name="search" placeholder="..." [(ngModel)]="name">
+              <button type="submit">Buscar</button>
+            </form>
+            <!--  <label for="searchName">Buscar por marca...</label>
+                <input type="text" class="search__input" placeholder="Buscar por marca ...
+                "[formControl]="search">
+            -->
+          </div>
+          <div class="col-md-4 col-sm-6" *ngFor="let Product of productos">
+            <div class="card" href="#" style="width: 16rem;">
+              <div class="card-body">
+                <p class="card-text">{{Product.name}}-{{Product.brand}}</p>
+                <img src="{{Product.images}}" class="card-img-top" alt="...">
+                <p class="card-text">{{Product.description}}</p>
+                <p class="card-text">{{Product.price}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<app-footer></app-footer>

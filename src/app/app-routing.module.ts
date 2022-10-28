@@ -6,16 +6,19 @@ import { RegisterComponent } from './components/register/register.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { BuzohombreComponent } from './components/buzohombre/buzohombre.component';
-import { BuzomujerComponent } from './components/buzomujer/buzomujer.component';
-import { BuzoninioComponent } from './components/buzoninio/buzoninio.component';
-import { RemerahombreComponent } from './components/remerahombre/remerahombre.component';
-import { RemeramujerComponent } from './components/remeramujer/remeramujer.component';
-import { RemeraninioComponent } from './components/remeraninio/remeraninio.component';
-import { PantalonhombreComponent } from './components/pantalonhombre/pantalonhombre.component';
-import { PantalonninioComponent } from './components/pantalonninio/pantalonninio.component';
-import { PantalonmujerComponent } from './components/pantalonmujer/pantalonmujer.component';
 import { AsComponent } from './components/as/as.component';
+
+///Unisex-components
+import { RemeraunisexComponent } from './components/remeraunisex/remeraunisex.component';
+import { BuzounisexComponent } from './components/buzounisex/buzounisex.component';
+import { JeanunisexComponent } from './components/jeanunisex/jeanunisex.component';
+import { CamisaunisexComponent } from './components/camisaunisex/camisaunisex.component';
+import { CamperaunisexComponent } from './components/camperaunisex/camperaunisex.component';
+import { ChombaunisexComponent } from './components/chombaunisex/chombaunisex.component';
+import { JogginunisexComponent } from './components/jogginunisex/jogginunisex.component';
+import { BermudaunisexComponent } from './components/bermudaunisex/bermudaunisex.component';
+import { TodosComponent } from './components/todos/todos.component';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/inicio' },
   {
@@ -26,15 +29,17 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   {path: 'inicio',component: InicioComponent},
-  {path: 'buzohombre',component: BuzohombreComponent},
-  {path: 'buzomujer',component: BuzomujerComponent},
-  {path: 'buzoninio',component: BuzoninioComponent},
-  {path: 'remerahombre',component: RemerahombreComponent},
-  {path: 'remeramujer',component: RemeramujerComponent},
-  {path: 'remeraninio',component: RemeraninioComponent},
-  {path: 'pantalonhombre',component: PantalonhombreComponent},
-  {path: 'pantalonninio',component: PantalonninioComponent},
-  {path: 'pantalonmujer',component: PantalonmujerComponent},
+  ///Unisex-components
+  {path: 'remeraunisex',component: RemeraunisexComponent},
+  {path: 'buzounisex',component: BuzounisexComponent},
+  {path: 'jeanunisex',component: JeanunisexComponent},
+  {path: 'camisaunisex',component: CamisaunisexComponent},
+  {path: 'camperaunisex',component: CamperaunisexComponent},
+  {path: 'chombaunisex',component: ChombaunisexComponent},
+  {path: 'jogginunisex',component: JogginunisexComponent},
+  {path: 'bermudaunisex',component: BermudaunisexComponent},
+  {path: 'todos',component: TodosComponent},
+
   {path: 'as',component: AsComponent},
   {path: '**', component:PageNotFoundComponent}
 ];
